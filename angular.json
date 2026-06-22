@@ -32,7 +32,9 @@
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeflex/primeflex.css"
+              ,"src/styles.scss"
             ],
             "scripts": []
           },
@@ -98,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "aa2d4bc4-b9bd-4f46-b046-44421a52326c"
   }
 }
