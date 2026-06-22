@@ -1,0 +1,27 @@
+export const ROUTES = {
+  AUTH: {
+    LOGIN: 'login',
+    REGISTER: 'register',
+    FORGOT_PASSWORD: 'forgot-password',
+  },
+
+  APP: {
+    DASHBOARD: 'dashboard',
+
+    ACCOUNTS: 'accounts',
+
+    TRANSACTIONS: 'transactions',
+
+    TRANSFERS: 'transfers',
+
+    BENEFICIARIES: 'beneficiaries',
+
+    LOANS: 'loans',
+
+    REPORTS: 'reports',
+
+    ADMIN: 'admin',
+
+    PROFILE: 'profile',
+  },
+} as const;
