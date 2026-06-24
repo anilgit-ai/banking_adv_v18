@@ -1,0 +1,52 @@
+<aside class="sidebar">
+  <a
+    [routerLink]="['/app', routes.APP.DASHBOARD]"
+    routerLinkActive="sidebar__link--active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    class="sidebar__link"
+  >
+    <i class="pi pi-home"></i>
+
+    <span>Dashboard</span>
+  </a>
+
+  <a
+    [routerLink]="['/app', routes.APP.ACCOUNTS]"
+    routerLinkActive="sidebar__link--active"
+    class="sidebar__link"
+  >
+    <i class="pi pi-wallet"></i>
+
+    <span>Accounts</span>
+  </a>
+
+  <a
+    [routerLink]="['/app', routes.APP.TRANSACTIONS]"
+    routerLinkActive="sidebar__link--active"
+    class="sidebar__link"
+  >
+    <i class="pi pi-history"></i>
+
+    <span>Transactions</span>
+  </a>
+
+  <a
+    [routerLink]="['/app', routes.APP.TRANSFERS]"
+    routerLinkActive="sidebar__link--active"
+    class="sidebar__link"
+  >
+    <i class="pi pi-send"></i>
+
+    <span>Transfers</span>
+  </a>
+
+  <a
+    [routerLink]="['/app', routes.APP.LOANS]"
+    routerLinkActive="sidebar__link--active"
+    class="sidebar__link"
+  >
+    <i class="pi pi-money-bill"></i>
+
+    <span>Loans</span>
+  </a>
+</aside>
