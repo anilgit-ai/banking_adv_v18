@@ -1,14 +1,13 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { ToastContainerComponent } from './shared/toast/toast-container/toast-container.component';
+import { NotificationContainerComponent } from './shared/toast/components/notification-container/notification-container.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ToastContainerComponent],
-  template: `
-  <app-toast-container></app-toast-container>
-  <router-outlet></router-outlet>`,
+  imports: [RouterOutlet, NotificationContainerComponent],
+  template: ` <app-notification-container></app-notification-container>
+    <router-outlet></router-outlet>`,
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
