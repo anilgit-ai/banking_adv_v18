@@ -1,0 +1,25 @@
+.header {
+  height: 64px;
+
+  background: white;
+
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  padding: 0 1rem;
+
+  box-shadow: var(--shadow-sm);
+
+  &__logo {
+    font-weight: 600;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
