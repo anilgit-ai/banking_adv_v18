@@ -1,0 +1,7 @@
+.main-layout {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  &__content {
+    padding: 1rem;
+  }
+}
