@@ -1,0 +1,201 @@
+.login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 40%, #2563eb 100%);
+
+  position: relative;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.25;
+  }
+
+  &::before {
+    width: 350px;
+    height: 350px;
+    background: #60a5fa;
+    top: -100px;
+    left: -100px;
+  }
+
+  &::after {
+    width: 300px;
+    height: 300px;
+    background: #c084fc;
+    bottom: -80px;
+    right: -80px;
+  }
+
+  &__card {
+    width: 100%;
+    max-width: 430px;
+
+    padding: 2.5rem;
+    border-radius: 24px;
+
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+
+    box-shadow:
+      0 25px 50px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(255, 255, 255, 0.08);
+
+    color: white;
+    z-index: 1;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  &__icon {
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+
+  &__subtitle {
+    margin-top: 0.75rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    input {
+      width: 100%;
+      padding: 0.9rem 1rem;
+
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+
+      transition: all 0.3s ease;
+
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.55);
+      }
+
+      &:focus {
+        outline: none;
+        border-color: #93c5fd;
+        background: rgba(255, 255, 255, 0.15);
+
+        box-shadow: 0 0 0 4px rgba(147, 197, 253, 0.2);
+      }
+    }
+  }
+
+  &__forgot {
+    align-self: flex-end;
+
+    color: #bfdbfe;
+    font-size: 0.9rem;
+    text-decoration: none;
+
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: white;
+      text-decoration: underline;
+    }
+  }
+
+  &__button {
+    width: 100%;
+    margin-top: 0.5rem;
+    border-radius: 12px !important;
+
+    background: linear-gradient(135deg, #3b82f6, #2563eb) !important;
+
+    border: none !important;
+    padding: 0.9rem !important;
+
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+
+    transition: all 0.3s ease !important;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+/* PrimeNG overrides */
+:host ::ng-deep {
+  .p-password,
+  .p-inputtext {
+    width: 100%;
+  }
+
+  .p-password-input {
+    width: 100%;
+    background: transparent !important;
+    color: white !important;
+    border: none !important;
+  }
+
+  .p-button {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .login {
+    padding: 1rem;
+
+    &__card {
+      padding: 2rem 1.5rem;
+    }
+
+    &__title {
+      font-size: 1.75rem;
+    }
+  }
+}

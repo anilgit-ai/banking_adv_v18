@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="login">
+  <div class="login__card">
+    <div class="login__header">
+      <i class="pi pi-building-columns login__icon"></i>
+
+      <h1 class="login__title">Login</h1>
+
+      <p class="login__subtitle">Welcome back! Please sign in to continue.</p>
+    </div>
+
+    <form class="login__form" [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="login__field">
+        <label for="email"> Username </label>
+
+        <input
+          id="email"
+          pInputText
+          formControlName="email"
+          placeholder="Enter your username"
+        />
+      </div>
+
+      <div class="login__field">
+        <label for="password"> Password </label>
+
+        <input
+          id="password"
+          pPassword
+          formControlName="password"
+          placeholder="Enter your password"
+        />
+      </div>
+
+      <a class="login__forgot" routerLink="/app/auth/forgot-password">
+        Forgot Password?
+      </a>
+
+      <button
+        pButton
+        type="submit"
+        label="Login"
+        class="login__button"
+      ></button>
+    </form>
+  </div>
+</div>
