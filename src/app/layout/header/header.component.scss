@@ -1,25 +1,40 @@
 .header {
   height: 64px;
-
-  background: white;
-
-  display: flex;
-
-  justify-content: space-between;
-
-  align-items: center;
-
-  padding: 0 1rem;
-
+  background: #ffffff;
   box-shadow: var(--shadow-sm);
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0 1.5rem;
+
   &__logo {
+    font-size: 1.2rem;
     font-weight: 600;
+    color: var(--primary-color);
   }
 
   &__actions {
     display: flex;
-    gap: 1rem;
     align-items: center;
+    gap: 1rem;
+  }
+
+  &__user {
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  &__logout {
+    background: transparent !important;
+
+    color: #e70909 !important;
+    transition: all 0.3s ease;
+    &:hover {
+      background: #f9f7f7 !important;
+
+      color: #110229 !important;
+    }
   }
 }
