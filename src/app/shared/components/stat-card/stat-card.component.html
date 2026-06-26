@@ -1,0 +1,15 @@
+<div class="stat-card" [style.background]="card().backgroundColor">
+  <div class="stat-card__icon">
+    <i [class]="card().icon" [style.color]="card().iconColor"> </i>
+  </div>
+
+  <div class="stat-card__content">
+    <h3>
+      {{ card().value }}
+    </h3>
+
+    <p>
+      {{ card().title }}
+    </p>
+  </div>
+</div>
