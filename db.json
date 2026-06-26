@@ -33,6 +33,14 @@
       "token": "customer-token"
     }
   ],
+  "dashboard": [
+    {
+      "totalBalance": 250000,
+      "totalAccounts": 125,
+      "totalCustomers": 520,
+      "activeLoans": 32
+    }
+  ],
   "accounts": [],
   "transactions": [],
   "beneficiaries": [],
