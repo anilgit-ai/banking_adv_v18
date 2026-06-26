@@ -1,5 +1,38 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Admin User",
+      "email": "admin@bank.com",
+      "password": "Admin@123",
+      "role": "ADMIN",
+      "token": "admin-token"
+    },
+    {
+      "id": 2,
+      "fullName": "Manager User",
+      "email": "manager@bank.com",
+      "password": "Manager@123",
+      "role": "MANAGER",
+      "token": "manager-token"
+    },
+    {
+      "id": 3,
+      "fullName": "Employee User",
+      "email": "employee@bank.com",
+      "password": "Employee@123",
+      "role": "EMPLOYEE",
+      "token": "employee-token"
+    },
+    {
+      "id": 4,
+      "fullName": "Customer User",
+      "email": "customer@bank.com",
+      "password": "Customer@123",
+      "role": "CUSTOMER",
+      "token": "customer-token"
+    }
+  ],
   "accounts": [],
   "transactions": [],
   "beneficiaries": [],

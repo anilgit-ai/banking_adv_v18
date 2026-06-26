@@ -1,17 +1,45 @@
 <header class="header">
-  <div class="header__logo">Banking Management System</div>
+  <!-- ================================
+       Application Logo
+  ================================= -->
+  <div class="header__logo">
+    <i class="pi pi-building-columns"></i>
 
+    <span> Banking Management System </span>
+  </div>
+
+  <!-- ================================
+       Right Side Actions
+  ================================= -->
   <div class="header__actions">
+    <!-- Notification -->
     <button
       pButton
       type="button"
       icon="pi pi-bell"
       [text]="true"
       rounded
+      class="header__notification"
     ></button>
 
-    <span class="header__user"> Welcome user 🧑🏿 </span>
+    <!-- Logged In User -->
+    <div class="header__profile">
+      <div class="header__avatar">
+        <i class="pi pi-user"></i>
+      </div>
 
+      <div class="header__user">
+        <span class="header__name">
+          {{ currentUser()?.fullName }}
+        </span>
+
+        <small class="header__role">
+          {{ currentUser()?.role }}
+        </small>
+      </div>
+    </div>
+
+    <!-- Logout -->
     <button
       pButton
       type="button"
