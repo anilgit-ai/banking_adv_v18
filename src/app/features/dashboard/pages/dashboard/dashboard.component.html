@@ -1,5 +1,23 @@
-<div class="dashboard__statistics">
-  @for (card of statistics; track card.title) {
-    <app-stat-card [card]="card"> </app-stat-card>
-  }
-</div>
+<section class="dashboard">
+  <!-- ===========================================
+       Dashboard Header
+  ============================================ -->
+  <div class="dashboard__header">
+    <h2>
+      Welcome,
+
+      {{ currentUser()?.fullName }} 👋
+    </h2>
+
+    <p>Here's your banking overview.</p>
+  </div>
+
+  <!-- ===========================================
+       Dashboard Statistics
+  ============================================ -->
+  <div class="dashboard__statistics">
+    @for (card of statistics(); track card.title) {
+      <app-stat-card [card]="card"> </app-stat-card>
+    }
+  </div>
+</section>

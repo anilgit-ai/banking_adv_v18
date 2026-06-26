@@ -1,15 +1,39 @@
 .dashboard {
   padding: 2rem;
 
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2rem;
+
   &__header {
-    margin-bottom: 2rem;
+    h2 {
+      margin: 0;
+
+      font-size: 1.8rem;
+
+      font-weight: 700;
+
+      color: #1f2937;
+    }
+
+    p {
+      margin-top: 0.35rem;
+
+      color: #6b7280;
+
+      font-size: 0.95rem;
+    }
   }
 
   &__statistics {
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 
-    gap: 1.5rem;
+    justify-content: space-between;
+
+    gap: 1rem;
   }
 }

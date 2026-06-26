@@ -1,5 +1,4 @@
-import { CardVariant } from "../../../shared/enums/card-varient.enum";
-
+import { CardVariant } from '../../../shared/enums/card-variant.enum';
 
 /**
  * Represents one statistics card.
