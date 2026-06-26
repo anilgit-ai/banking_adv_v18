@@ -2,22 +2,35 @@
   <!-- ===========================================
        Dashboard Header
   ============================================ -->
-  <div class="dashboard__header">
-    <h2>
+  <header class="dashboard__header">
+    <h2 class="dashboard__title">
       Welcome,
 
       {{ currentUser()?.fullName }} 👋
     </h2>
 
-    <p>Here's your banking overview.</p>
-  </div>
+    <p class="dashboard__subtitle">Here's your banking overview.</p>
+  </header>
 
   <!-- ===========================================
-       Dashboard Statistics
+       Statistics Cards
   ============================================ -->
-  <div class="dashboard__statistics">
+  <section class="dashboard__statistics">
     @for (card of statistics(); track card.title) {
       <app-stat-card [card]="card"> </app-stat-card>
     }
-  </div>
+  </section>
+
+  <!-- ===========================================
+       Quick Actions
+  ============================================ -->
+  <section class="dashboard__actions">
+    <h3 class="dashboard__section-title">Quick Actions</h3>
+
+    <div class="dashboard__action-grid">
+      @for (action of quickActions; track action.title) {
+        <app-action-card [action]="action"> </app-action-card>
+      }
+    </div>
+  </section>
 </section>

@@ -19,13 +19,15 @@ import { DashboardSummary } from '../../models/dashboard-summary.model';
 
 import { StatisticCard } from '../../models/statistic-card.model';
 import { CardVariant } from '../../../../shared/enums/card-variant.enum';
+import { QuickAction } from '../../models/quick-action.model';
+import { ActionCardComponent } from '../../../../shared/components/action-card/action-card.component';
 
 @Component({
   selector: 'app-dashboard',
 
   standalone: true,
 
-  imports: [CommonModule, StatCardComponent],
+  imports: [CommonModule, StatCardComponent,ActionCardComponent],
 
   templateUrl: './dashboard.component.html',
 
@@ -116,4 +118,37 @@ export class DashboardComponent implements OnInit {
       },
     ];
   }
+  protected readonly quickActions: QuickAction[] = [
+    {
+      title: 'Accounts',
+
+      icon: 'pi pi-building-columns',
+
+      route: '/app/accounts',
+    },
+
+    {
+      title: 'Customers',
+
+      icon: 'pi pi-users',
+
+      route: '/app/customers',
+    },
+
+    {
+      title: 'Transfer',
+
+      icon: 'pi pi-send',
+
+      route: '/app/transactions',
+    },
+
+    {
+      title: 'Reports',
+
+      icon: 'pi pi-chart-bar',
+
+      route: '/app/reports',
+    },
+  ];
 }
