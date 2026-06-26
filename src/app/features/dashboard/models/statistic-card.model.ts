@@ -1,7 +1,27 @@
+import { CardVariant } from "../../../shared/enums/card-varient.enum";
+
+
+/**
+ * Represents one statistics card.
+ */
 export interface StatisticCard {
+  /**
+   * Card title.
+   */
   readonly title: string;
+
+  /**
+   * Display value.
+   */
   readonly value: string | number;
+
+  /**
+   * PrimeNG icon.
+   */
   readonly icon: string;
-  readonly backgroundColor: string;
-  readonly iconColor: string;
+
+  /**
+   * Visual appearance.
+   */
+  readonly variant: CardVariant;
 }

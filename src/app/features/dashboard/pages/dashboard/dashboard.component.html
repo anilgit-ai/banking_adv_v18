@@ -1,17 +1,5 @@
-<section class="dashboard">
-  <div class="dashboard__header">
-    <h2>
-      Welcome,
-
-      {{ currentUser()?.fullName }}
-    </h2>
-
-    <p>Here's today's banking overview.</p>
-  </div>
-
-  <div class="dashboard__statistics">
-    @for (card of statistics; track card.title) {
-      <app-stat-card [card]="card"> </app-stat-card>
-    }
-  </div>
-</section>
+<div class="dashboard__statistics">
+  @for (card of statistics; track card.title) {
+    <app-stat-card [card]="card"> </app-stat-card>
+  }
+</div>

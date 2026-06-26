@@ -1,8 +1,10 @@
-<div class="stat-card" [style.background]="card().backgroundColor">
+<div class="stat-card" [ngClass]="cardClass()">
+  <!-- Icon -->
   <div class="stat-card__icon">
-    <i [class]="card().icon" [style.color]="card().iconColor"> </i>
+    <i [class]="card().icon"> </i>
   </div>
 
+  <!-- Content -->
   <div class="stat-card__content">
     <h3>
       {{ card().value }}

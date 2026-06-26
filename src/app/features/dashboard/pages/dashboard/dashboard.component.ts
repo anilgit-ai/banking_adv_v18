@@ -10,6 +10,7 @@ import { StatCardComponent } from '../../../../shared/components/stat-card/stat-
 import { StatisticCard } from '../../models/statistic-card.model';
 
 import { AuthStore } from '../../../../store/auth/auth.store';
+import { CardVariant } from '../../../../shared/enums/card-varient.enum';
 
 @Component({
   selector: 'app-dashboard',
@@ -42,32 +43,28 @@ export class DashboardComponent {
       title: 'Total Balance',
       value: '₹2,50,000',
       icon: 'pi pi-wallet',
-      backgroundColor: '#2563eb',
-      iconColor: '#ffffff',
+      variant: CardVariant.PRIMARY,
     },
 
     {
       title: 'Accounts',
       value: 125,
       icon: 'pi pi-building-columns',
-      backgroundColor: '#059669',
-      iconColor: '#ffffff',
+      variant: CardVariant.SUCCESS,
     },
 
     {
       title: 'Customers',
       value: 452,
       icon: 'pi pi-users',
-      backgroundColor: '#7c3aed',
-      iconColor: '#ffffff',
+      variant: CardVariant.PURPLE,
     },
 
     {
       title: 'Loans',
       value: 18,
       icon: 'pi pi-credit-card',
-      backgroundColor: '#ea580c',
-      iconColor: '#ffffff',
+      variant: CardVariant.WARNING,
     },
   ];
 }
