@@ -44,26 +44,15 @@ import { Transaction } from '../../models/transaction.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
-  /**
-   * Dashboard service.
-   */
+  // services and store
   private readonly dashboardService = inject(DashboardService);
   private readonly transactionService = inject(TransactionService);
-
-  /**
-   * Authentication store.
-   */
   private readonly authStore = inject(AuthStore);
-
-  /**
-   * Logged-in user.
-   */
+  //signals
   protected readonly currentUser = computed(() => this.authStore.user());
-
-  /**
-   * Dashboard statistic cards.
-   */
   protected readonly statistics = signal<StatisticCard[]>([]);
+  protected readonly loading = signal(false);
+  protected readonly hasError = signal(false);
 
   /**
    * Load dashboard data.
@@ -72,27 +61,37 @@ export class DashboardComponent implements OnInit {
     this.loadDashboardSummary();
     this.loadRecentTransaction();
   }
-
   /**
    * Retrieves dashboard summary
    * from backend.
    */
   private loadDashboardSummary(): void {
+    this.loading.set(true);
+    this.hasError.set(false);
     this.dashboardService.getSummary().subscribe({
       next: (summary) => {
-        console.log('Dashboard Summary:', summary);
-
         this.statistics.set(this.mapSummaryToCards(summary));
-
-        console.log('Statistics:', this.statistics());
+        this.loading.set(false);
       },
-
-      error: (error) => {
-        console.error(error);
+      error: () => {
+        this.loading.set(false);
+        this.hasError.set(true);
       },
     });
   }
-
+  //Recent transactions
+  protected readonly transactions = signal<Transaction[]>([]);
+  // Load transactions
+  private loadRecentTransaction(): void {
+    this.transactionService.getRecentTransactions().subscribe({
+      next: (transactions) => {
+        this.transactions.set(transactions);
+      },
+      error: () => {
+        this.hasError.set(true);
+      },
+    });
+  }
   /**
    * Converts backend response
    * into reusable statistic cards.
@@ -161,14 +160,4 @@ export class DashboardComponent implements OnInit {
       route: '/app/reports',
     },
   ];
-  //Recent transactions
-  protected readonly transactions = signal<Transaction[]>([]);
-  // Load transactions
-  private loadRecentTransaction(): void {
-    this.transactionService.getRecentTransactions().subscribe({
-      next: (transactions) => {
-        this.transactions.set(transactions);
-      },
-    });
-  }
 }
