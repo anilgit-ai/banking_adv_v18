@@ -21,13 +21,21 @@ import { StatisticCard } from '../../models/statistic-card.model';
 import { CardVariant } from '../../../../shared/enums/card-variant.enum';
 import { QuickAction } from '../../models/quick-action.model';
 import { ActionCardComponent } from '../../../../shared/components/action-card/action-card.component';
+import { RecentTransactionsComponent } from '../../components/recent-transactions/recent-transactions.component';
+import { TransactionService } from '../../services/transaction.service';
+import { Transaction } from '../../models/transaction.model';
 
 @Component({
   selector: 'app-dashboard',
 
   standalone: true,
 
-  imports: [CommonModule, StatCardComponent,ActionCardComponent],
+  imports: [
+    CommonModule,
+    StatCardComponent,
+    ActionCardComponent,
+    RecentTransactionsComponent,
+  ],
 
   templateUrl: './dashboard.component.html',
 
@@ -40,6 +48,7 @@ export class DashboardComponent implements OnInit {
    * Dashboard service.
    */
   private readonly dashboardService = inject(DashboardService);
+  private readonly transactionService = inject(TransactionService);
 
   /**
    * Authentication store.
@@ -61,6 +70,7 @@ export class DashboardComponent implements OnInit {
    */
   public ngOnInit(): void {
     this.loadDashboardSummary();
+    this.loadRecentTransaction();
   }
 
   /**
@@ -151,4 +161,14 @@ export class DashboardComponent implements OnInit {
       route: '/app/reports',
     },
   ];
+  //Recent transactions
+  protected readonly transactions = signal<Transaction[]>([]);
+  // Load transactions
+  private loadRecentTransaction(): void {
+    this.transactionService.getRecentTransactions().subscribe({
+      next: (transactions) => {
+        this.transactions.set(transactions);
+      },
+    });
+  }
 }

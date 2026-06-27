@@ -1,15 +1,10 @@
 .dashboard {
   display: flex;
-
   flex-direction: column;
-
   gap: 2rem;
-
   padding: 2rem;
-
-  background: #f8fafc;
-
   min-height: 100%;
+  background-color: #f8fafc;
 
   /* ==========================================
      Header
@@ -17,27 +12,20 @@
 
   &__header {
     display: flex;
-
     flex-direction: column;
-
     gap: 0.4rem;
   }
 
   &__title {
     margin: 0;
-
     font-size: 1.8rem;
-
     font-weight: 700;
-
     color: #1f2937;
   }
 
   &__subtitle {
     margin: 0;
-
     font-size: 0.95rem;
-
     color: #64748b;
   }
 
@@ -47,9 +35,7 @@
 
   &__statistics {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 1rem;
   }
 
@@ -59,33 +45,40 @@
 
   &__actions {
     display: flex;
-
     flex-direction: column;
-
     gap: 1rem;
-  }
-
-  &__section-title {
-    margin: 0;
-
-    font-size: 1.25rem;
-
-    font-weight: 600;
-
-    color: #1f2937;
   }
 
   &__action-grid {
     display: grid;
-
     grid-template-columns: repeat(4, 1fr);
-
     gap: 1rem;
+  }
+
+  /* ==========================================
+     Recent Transactions
+  ========================================== */
+
+  &__transactions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  /* ==========================================
+     Shared Section Title
+  ========================================== */
+
+  &__section-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
   }
 }
 
 /* ==========================================
-   Tablet
+   Tablet (≤1024px)
 ========================================== */
 
 @media (max-width: 1024px) {
@@ -98,13 +91,12 @@
 }
 
 /* ==========================================
-   Mobile
+   Mobile (≤768px)
 ========================================== */
 
 @media (max-width: 768px) {
   .dashboard {
     padding: 1rem;
-
     gap: 1.5rem;
 
     &__title {

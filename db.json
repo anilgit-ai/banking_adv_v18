@@ -43,7 +43,32 @@
 
   "accounts": [],
 
-  "transactions": [],
+  "transactions": [
+    {
+      "id": "txn-001",
+      "referenceNumber": "TXN-20260626-001",
+      "transactionDate": "2026-06-26",
+      "description": "Salary Credit",
+      "type": "CREDIT",
+      "amount": 50000
+    },
+    {
+      "id": "txn-002",
+      "referenceNumber": "TXN-20260625-002",
+      "transactionDate": "2026-06-25",
+      "description": "ATM Withdrawal",
+      "type": "DEBIT",
+      "amount": 5000
+    },
+    {
+      "id": "txn-003",
+      "referenceNumber": "TXN-20260624-003",
+      "transactionDate": "2026-06-24",
+      "description": "Electricity Bill",
+      "type": "DEBIT",
+      "amount": 2400
+    }
+  ],
 
   "beneficiaries": [],
 

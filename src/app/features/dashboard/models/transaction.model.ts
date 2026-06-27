@@ -1,12 +1,6 @@
-export enum TransactionType {
-  CREDIT = 'CREDIT',
+import { TransactionType } from "../../../shared/enums/transaction-type.enum";
 
-  DEBIT = 'DEBIT',
-}
 
-/**
- * Represents a banking transaction.
- */
 export interface Transaction {
   readonly id: string;
 

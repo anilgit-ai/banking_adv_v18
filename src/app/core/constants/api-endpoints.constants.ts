@@ -12,7 +12,9 @@ export const API_ENDPOINTS = {
 
   ACCOUNTS: '/accounts',
 
-  TRANSACTIONS: '/transactions',
+  TRANSACTIONS: {
+    LIST: '/transactions',
+  },
 
   BENEFICIARIES: '/beneficiaries',
 
