@@ -33,15 +33,38 @@
       "token": "customer-token"
     }
   ],
-
   "dashboard": {
     "totalBalance": 250000,
     "totalAccounts": 125,
     "totalCustomers": 452,
     "activeLoans": 18
   },
-
-  "accounts": [],
+  "accounts": [
+    {
+      "id": "acc-001",
+      "accountNumber": "100000001",
+      "accountHolder": "John Doe",
+      "accountType": "Savings",
+      "balance": 75000,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "acc-002",
+      "accountNumber": "100000002",
+      "accountHolder": "Jane Smith",
+      "accountType": "Current",
+      "balance": 120000,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "acc-003",
+      "accountNumber": "100000003",
+      "accountHolder": "Michael Brown",
+      "accountType": "Savings",
+      "balance": 15400,
+      "status": "BLOCKED"
+    }
+  ],
 
   "transactions": [
     {

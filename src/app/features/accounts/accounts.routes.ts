@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 
+import { AccountsListComponent } from './pages/accounts-list/accounts-list.component';
+
 export const ACCOUNTS_ROUTES: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('./pages/accounts/accounts.component').then(
-        (m) => m.AccountsComponent,
-      ),
+    component: AccountsListComponent,
+    title: 'Accounts',
   },
 ];
