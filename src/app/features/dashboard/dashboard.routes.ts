@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
 
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
 export const DASHBOARD_ROUTES: Routes = [
   {
     path: '',
-    loadComponent: () =>
-      import('./pages/dashboard/dashboard.component').then(
-        (m) => m.DashboardComponent,
-      ),
+    component: DashboardComponent,
+    title: 'Dashboard',
   },
 ];

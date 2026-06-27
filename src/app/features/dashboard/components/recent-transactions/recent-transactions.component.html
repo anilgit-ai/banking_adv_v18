@@ -1,0 +1,47 @@
+<section class="transactions">
+  <h3 class="transactions__title">Recent Transactions</h3>
+
+  <p-table [value]="transactions()" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Date</th>
+
+        <th>Description</th>
+
+        <th>Type</th>
+
+        <th class="amount-column">Amount</th>
+      </tr>
+    </ng-template>
+
+    <ng-template pTemplate="body" let-transaction>
+      <tr>
+        <td>
+          {{ transaction.transactionDate }}
+        </td>
+
+        <td>
+          {{ transaction.description }}
+        </td>
+
+        <td>
+          <p-tag
+            [value]="transaction.type"
+            [severity]="
+              transaction.type === transactionType.CREDIT ? 'success' : 'danger'
+            "
+          >
+          </p-tag>
+        </td>
+
+        <td
+          class="amount-column"
+          [class.credit]="transaction.type === transactionType.CREDIT"
+          [class.debit]="transaction.type === transactionType.DEBIT"
+        >
+          ₹{{ transaction.amount | number }}
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</section>

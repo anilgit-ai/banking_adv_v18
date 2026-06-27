@@ -1,7 +1,7 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "usr-001",
       "fullName": "Admin User",
       "email": "admin@bank.com",
       "password": "Admin@123",
@@ -9,7 +9,7 @@
       "token": "admin-token"
     },
     {
-      "id": 2,
+      "id": "usr-002",
       "fullName": "Manager User",
       "email": "manager@bank.com",
       "password": "Manager@123",
@@ -17,7 +17,7 @@
       "token": "manager-token"
     },
     {
-      "id": 3,
+      "id": "usr-003",
       "fullName": "Employee User",
       "email": "employee@bank.com",
       "password": "Employee@123",
@@ -25,7 +25,7 @@
       "token": "employee-token"
     },
     {
-      "id": 4,
+      "id": "usr-004",
       "fullName": "Customer User",
       "email": "customer@bank.com",
       "password": "Customer@123",
@@ -33,10 +33,48 @@
       "token": "customer-token"
     }
   ],
+
+  "dashboard": {
+    "totalBalance": 250000,
+    "totalAccounts": 125,
+    "totalCustomers": 452,
+    "activeLoans": 18
+  },
+
   "accounts": [],
-  "transactions": [],
+
+  "transactions": [
+    {
+      "id": "txn-001",
+      "referenceNumber": "TXN-20260626-001",
+      "transactionDate": "2026-06-26",
+      "description": "Salary Credit",
+      "type": "CREDIT",
+      "amount": 50000
+    },
+    {
+      "id": "txn-002",
+      "referenceNumber": "TXN-20260625-002",
+      "transactionDate": "2026-06-25",
+      "description": "ATM Withdrawal",
+      "type": "DEBIT",
+      "amount": 5000
+    },
+    {
+      "id": "txn-003",
+      "referenceNumber": "TXN-20260624-003",
+      "transactionDate": "2026-06-24",
+      "description": "Electricity Bill",
+      "type": "DEBIT",
+      "amount": 2400
+    }
+  ],
+
   "beneficiaries": [],
+
   "loans": [],
+
   "notifications": [],
+
   "auditLogs": []
 }

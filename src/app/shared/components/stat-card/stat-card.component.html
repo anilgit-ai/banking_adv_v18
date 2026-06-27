@@ -1,0 +1,19 @@
+<div class="stat-card" [ngClass]="cardClass()">
+  <!-- Card Icon -->
+  <div class="stat-card__icon">
+    <i [class]="card().icon"></i>
+  </div>
+
+  <!-- Card Content -->
+  <div class="stat-card__content">
+    <!-- Card Title -->
+    <p class="stat-card__title">
+      {{ card().title }}
+    </p>
+
+    <!-- Card Value -->
+    <h3 class="stat-card__value">
+      {{ card().value }}
+    </h3>
+  </div>
+</div>

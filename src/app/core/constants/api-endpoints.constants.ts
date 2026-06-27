@@ -4,12 +4,17 @@ export const API_ENDPOINTS = {
     REGISTER: '/auth/register',
     REFRESH_TOKEN: '/auth/refresh-token',
   },
+  DASHBOARD: {
+    SUMMARY: '/dashboard',
+  },
 
   USERS: '/users',
 
   ACCOUNTS: '/accounts',
 
-  TRANSACTIONS: '/transactions',
+  TRANSACTIONS: {
+    LIST: '/transactions',
+  },
 
   BENEFICIARIES: '/beneficiaries',
 
