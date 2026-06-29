@@ -1,1 +1,61 @@
-<p>edit-customer works!</p>
+<section class="edit-customer">
+  <!-- ===========================================
+       Page Header
+  ============================================ -->
+
+  <header class="edit-customer__header">
+    <div>
+      <h2 class="edit-customer__title">Edit Customer</h2>
+
+      <p class="edit-customer__subtitle">Update customer information.</p>
+    </div>
+  </header>
+
+  <!-- ===========================================
+       Loading State
+  ============================================ -->
+
+  @if (loading()) {
+    <div class="edit-customer__loading">
+      <i class="pi pi-spin pi-spinner"></i>
+
+      <span>Loading customer...</span>
+    </div>
+  }
+
+  <!-- ===========================================
+       Customer Form
+  ============================================ -->
+
+  @else {
+    <div class="edit-customer__card">
+      <app-customer-form [form]="customerForm"> </app-customer-form>
+    </div>
+
+    <!-- ===========================================
+         Footer Actions
+    ============================================ -->
+
+    <footer class="edit-customer__actions">
+      <button
+        pButton
+        type="button"
+        label="Cancel"
+        icon="pi pi-times"
+        severity="secondary"
+        outlined
+        (click)="cancel()"
+      ></button>
+
+      <button
+        pButton
+        type="button"
+        label="Update Customer"
+        icon="pi pi-save"
+        [loading]="saving()"
+        [disabled]="customerForm.invalid || saving()"
+        (click)="updateCustomer()"
+      ></button>
+    </footer>
+  }
+</section>

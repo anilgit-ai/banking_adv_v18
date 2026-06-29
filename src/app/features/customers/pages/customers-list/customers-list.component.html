@@ -1,0 +1,65 @@
+<section class="customers">
+  <!-- ===========================================
+       Header
+  ============================================ -->
+
+  <header class="customers__header">
+    <div>
+      <h2 class="customers__title">Customers</h2>
+
+      <p class="customers__subtitle">Manage customer information.</p>
+    </div>
+
+    <button
+      pButton
+      type="button"
+      label="New Customer"
+      icon="pi pi-plus"
+      (click)="createCustomer()"
+    ></button>
+  </header>
+
+  <!-- ===========================================
+       Filters
+  ============================================ -->
+
+  <app-customer-filters
+    [searchKeyword]="searchKeyword()"
+    [selectedGender]="selectedGender()"
+    [selectedStatus]="selectedStatus()"
+    (searchKeywordChange)="searchKeyword.set($event); applyFilters()"
+    (genderChange)="selectedGender.set($event); applyFilters()"
+    (statusChange)="selectedStatus.set($event); applyFilters()"
+    (clearFilters)="clearFilters()"
+  >
+  </app-customer-filters>
+
+  <!-- ===========================================
+       Error
+  ============================================ -->
+
+  @if (hasError()) {
+    <div class="customers__error">Failed to load customers.</div>
+  }
+
+  <!-- ===========================================
+       Loading
+  ============================================ -->
+
+  @else if (loading()) {
+    <div class="customers__loading">Loading customers...</div>
+  }
+
+  <!-- ===========================================
+       Table
+  ============================================ -->
+
+  @else {
+    <app-customer-table
+      [customers]="customers()"
+      [searchKeyword]="searchKeyword()"
+      (delete)="deleteCustomer($event)"
+    >
+    </app-customer-table>
+  }
+</section>
