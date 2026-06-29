@@ -11,6 +11,7 @@ export const ROUTES = {
   APP: {
     DASHBOARD: 'dashboard',
     ACCOUNTS: 'accounts',
+    CUSTOMERS: 'customers',
     TRANSACTIONS: 'transactions',
     TRANSFERS: 'transfers',
     BENEFICIARIES: 'beneficiaries',
