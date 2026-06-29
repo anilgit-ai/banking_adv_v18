@@ -1,1 +1,47 @@
-<p>edit-account works!</p>
+<section class="edit-account">
+  <!-- ===========================================
+       Page Header
+  ============================================ -->
+
+  <header class="edit-account__header">
+    <h2>Edit Account</h2>
+
+    <p>Update customer account information.</p>
+  </header>
+
+  @if (loading()) {
+    <div class="edit-account__loading">Loading account...</div>
+  } @else {
+    <!-- ===========================================
+         Form Card
+    ============================================ -->
+
+    <div class="edit-account__card">
+      <app-account-form [form]="accountForm"> </app-account-form>
+    </div>
+
+    <!-- ===========================================
+         Actions
+    ============================================ -->
+
+    <div class="edit-account__actions">
+      <button
+        pButton
+        type="button"
+        label="Cancel"
+        severity="secondary"
+        outlined
+        (click)="cancel()"
+      ></button>
+
+      <button
+        pButton
+        type="button"
+        label="Update Account"
+        icon="pi pi-save"
+        [loading]="saving()"
+        (click)="updateAccount()"
+      ></button>
+    </div>
+  }
+</section>

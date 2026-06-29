@@ -1,0 +1,49 @@
+.create-account {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2rem;
+
+  padding: 2rem;
+
+  background: #ffffff;
+
+  border-radius: 12px;
+
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+
+  &__header {
+    h2 {
+      margin: 0;
+
+      font-size: 1.8rem;
+
+      color: #1f2937;
+    }
+
+    p {
+      margin-top: 0.4rem;
+
+      color: #6b7280;
+    }
+  }
+
+  &__actions {
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .create-account {
+    padding: 1rem;
+
+    &__actions {
+      flex-direction: column;
+    }
+  }
+}

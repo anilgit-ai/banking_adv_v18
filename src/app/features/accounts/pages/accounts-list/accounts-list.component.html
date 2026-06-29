@@ -1,1 +1,65 @@
-<p>accounts-list works!</p>
+<section class="accounts">
+  <!-- ===========================================
+       Page Header
+  ============================================ -->
+
+  <header class="accounts__header">
+    <div>
+      <h2 class="accounts__title">Accounts</h2>
+
+      <p class="accounts__subtitle">Manage all customer bank accounts.</p>
+    </div>
+
+    <button
+      pButton
+      type="button"
+      label="New Account"
+      icon="pi pi-plus"
+      (click)="createAccount()"
+    ></button>
+  </header>
+
+  <!-- ===========================================
+       Filters
+  ============================================ -->
+
+  <app-account-filters
+    [searchKeyword]="searchKeyword()"
+    [selectedAccountType]="selectedAccountType()"
+    [selectedStatus]="selectedStatus()"
+    (searchKeywordChange)="searchKeyword.set($event); applyFilters()"
+    (accountTypeChange)="selectedAccountType.set($event); applyFilters()"
+    (statusChange)="selectedStatus.set($event); applyFilters()"
+    (clearFilters)="clearFilters()"
+  >
+  </app-account-filters>
+
+  <!-- ===========================================
+       Error State
+  ============================================ -->
+
+  @if (hasError()) {
+    <div class="accounts__error">Failed to load accounts.</div>
+  }
+
+  <!-- ===========================================
+       Loading State
+  ============================================ -->
+
+  @else if (loading()) {
+    <div class="accounts__loading">Loading accounts...</div>
+  }
+
+  <!-- ===========================================
+       Accounts Table
+  ============================================ -->
+
+  @else {
+    <app-account-table
+      [accounts]="accounts()"
+      [searchKeyword]="searchKeyword()"
+      (delete)="deleteAccount($event)"
+    >
+    </app-account-table>
+  }
+</section>

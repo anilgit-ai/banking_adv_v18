@@ -1,0 +1,138 @@
+<p-table
+  [value]="accounts()"
+  responsiveLayout="scroll"
+  stripedRows
+  showGridlines
+  sortMode="single"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[10, 20, 50]"
+  [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} accounts"
+>
+  <!-- ===========================================
+       Table Header
+  ============================================ -->
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="accountNumber">
+        Account No
+
+        <p-sortIcon field="accountNumber"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="accountHolder">
+        Holder Name
+
+        <p-sortIcon field="accountHolder"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="accountType">
+        Account Type
+
+        <p-sortIcon field="accountType"></p-sortIcon>
+      </th>
+
+      <th class="text-right" pSortableColumn="balance">
+        Balance
+
+        <p-sortIcon field="balance"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="status">
+        Status
+
+        <p-sortIcon field="status"></p-sortIcon>
+      </th>
+
+      <th class="actions-column">Actions</th>
+    </tr>
+  </ng-template>
+
+  <!-- ===========================================
+       Table Body
+  ============================================ -->
+
+  <ng-template pTemplate="body" let-account>
+    <tr>
+      <td>
+        <span [innerHTML]="account.accountNumber | highlight: searchKeyword()">
+        </span>
+      </td>
+
+      <td>
+        <span [innerHTML]="account.accountHolder | highlight: searchKeyword()">
+        </span>
+      </td>
+
+      <td>
+        {{ account.accountType }}
+      </td>
+
+      <td class="text-right">₹{{ account.balance | number }}</td>
+
+      <td>
+        <p-tag
+          [value]="account.status"
+          [severity]="getSeverity(account.status)"
+        >
+        </p-tag>
+      </td>
+
+      <td>
+        <div class="table-actions">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-eye"
+            [text]="true"
+            rounded
+            aria-label="View"
+            [routerLink]="['/app/accounts', account.id]"
+          ></button>
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            [text]="true"
+            rounded
+            severity="secondary"
+            aria-label="Edit"
+            [routerLink]="['/app/accounts', account.id, 'edit']"
+          ></button>
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-trash"
+            [text]="true"
+            rounded
+            severity="danger"
+            aria-label="Delete"
+            (click)="delete.emit(account.id)"
+          ></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+
+  <!-- ===========================================
+       Empty State
+  ============================================ -->
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="6">
+        <div class="empty-state">
+          <i class="pi pi-folder-open"></i>
+
+          <h3>No Accounts Found</h3>
+
+          <p>Try changing your search or filters.</p>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

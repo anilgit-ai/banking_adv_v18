@@ -1,1 +1,28 @@
-<p>create-account works!</p>
+<section class="create-account">
+  <header class="create-account__header">
+    <h2>Create Account</h2>
+
+    <p>Create a new customer bank account.</p>
+  </header>
+
+  <app-account-form [form]="accountForm"> </app-account-form>
+
+  <div class="create-account__actions">
+    <button
+      pButton
+      type="button"
+      label="Cancel"
+      severity="secondary"
+      (click)="cancel()"
+    ></button>
+
+    <button
+      pButton
+      type="button"
+      label="Create Account"
+      icon="pi pi-check"
+      [loading]="saving()"
+      (click)="createAccount()"
+    ></button>
+  </div>
+</section>

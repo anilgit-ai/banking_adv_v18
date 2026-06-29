@@ -1,0 +1,122 @@
+.edit-account {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  padding: 2rem;
+  min-height: 100%;
+
+  background: #f8fafc;
+
+  /* ==========================================
+     Header
+  ========================================== */
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #1f2937;
+    }
+
+    p {
+      margin: 0;
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+  }
+
+  /* ==========================================
+     Form Card
+  ========================================== */
+
+  &__card {
+    padding: 2rem;
+
+    background: #fff;
+
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+
+    box-shadow:
+      0 1px 3px rgba(15, 23, 42, 0.04),
+      0 10px 30px rgba(15, 23, 42, 0.05);
+  }
+
+  /* ==========================================
+     Actions
+  ========================================== */
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  &__loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-height: 300px;
+
+    color: #64748b;
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================
+   PrimeNG Buttons
+========================================== */
+
+:host ::ng-deep {
+  .edit-account__actions {
+    .p-button {
+      min-width: 170px;
+      height: 46px;
+
+      border-radius: 10px;
+
+      font-weight: 600;
+
+      transition: all 0.25s ease;
+    }
+
+    .p-button:not(.p-button-outlined):hover {
+      transform: translateY(-2px);
+
+      box-shadow: 0 10px 24px rgba(59, 130, 246, 0.22);
+    }
+
+    .p-button-outlined:hover {
+      background: #f3f4f6;
+    }
+  }
+}
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 768px) {
+  .edit-account {
+    padding: 1rem;
+
+    &__card {
+      padding: 1.5rem;
+    }
+
+    &__actions {
+      flex-direction: column;
+
+      .p-button {
+        width: 100%;
+      }
+    }
+  }
+}

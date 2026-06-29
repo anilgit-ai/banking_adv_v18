@@ -1,0 +1,50 @@
+<div class="account-filters">
+  <!-- Search -->
+
+  <div class="account-filters__search">
+    <i class="pi pi-search"></i>
+
+    <input
+      pInputText
+      type="text"
+      placeholder="Search name or Account number..."
+      [ngModel]="searchKeyword()"
+      (ngModelChange)="searchKeywordChange.emit($event)"
+    />
+  </div>
+
+  <!-- Account Type -->
+
+  <p-select
+    class="account-filters__select"
+    [options]="accountTypes"
+    optionLabel="label"
+    optionValue="value"
+    placeholder="Account Type"
+    [ngModel]="selectedAccountType()"
+    (ngModelChange)="accountTypeChange.emit($event)"
+  >
+  </p-select>
+
+  <!-- Status -->
+
+  <p-select
+    class="account-filters__select"
+    [options]="accountStatuses"
+    optionLabel="label"
+    optionValue="value"
+    placeholder="Status"
+    [ngModel]="selectedStatus()"
+    (ngModelChange)="statusChange.emit($event)"
+  >
+  </p-select>
+  <button
+    pButton
+    type="button"
+    label="Clear Filters"
+    icon="pi pi-filter-slash"
+    severity="secondary"
+    outlined
+    (click)="clearFilters.emit()"
+  ></button>
+</div>

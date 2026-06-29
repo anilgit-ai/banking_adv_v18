@@ -1,0 +1,123 @@
+.accounts {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 1.5rem;
+
+  padding: 2rem;
+
+  background: #f8fafc;
+
+  min-height: calc(100vh - 70px);
+
+  /* ==========================================
+     Header
+  ========================================== */
+
+  &__header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    gap: 2rem;
+
+    flex-wrap: wrap;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-size: 2rem;
+
+    font-weight: 700;
+
+    color: #1f2937;
+  }
+
+  &__subtitle {
+    margin-top: 0.35rem;
+
+    font-size: 0.95rem;
+
+    color: #64748b;
+  }
+
+  /* ==========================================
+     Filters
+  ========================================== */
+
+  app-account-filters {
+    display: block;
+
+    width: 100%;
+  }
+
+  /* ==========================================
+     Loading
+  ========================================== */
+
+  &__loading {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    min-height: 320px;
+
+    background: #ffffff;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 14px;
+
+    color: #64748b;
+
+    font-weight: 600;
+  }
+
+  /* ==========================================
+     Error
+  ========================================== */
+
+  &__error {
+    padding: 1rem 1.25rem;
+
+    border-radius: 12px;
+
+    border-left: 4px solid #dc2626;
+
+    background: #fee2e2;
+
+    color: #b91c1c;
+
+    font-weight: 600;
+  }
+}
+
+:host ::ng-deep {
+  .p-button {
+    border-radius: 10px;
+
+    font-weight: 600;
+  }
+}
+
+@media (max-width: 992px) {
+  .accounts {
+    padding: 1rem;
+
+    &__header {
+      flex-direction: column;
+
+      align-items: stretch;
+    }
+
+    :host ::ng-deep .p-button {
+      width: 100%;
+    }
+  }
+}

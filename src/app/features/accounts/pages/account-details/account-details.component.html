@@ -1,1 +1,88 @@
-<p>account-details works!</p>
+<section class="account-details">
+  <!-- ===========================================
+       Header
+  ============================================ -->
+
+  <header class="account-details__header">
+    <div>
+      <h2 class="account-details__title">Account Details</h2>
+
+      <p class="account-details__subtitle">
+        View complete account information.
+      </p>
+    </div>
+
+    <button
+      pButton
+      type="button"
+      icon="pi pi-arrow-left"
+      label="Back"
+      severity="secondary"
+      outlined
+      (click)="goBack()"
+    ></button>
+  </header>
+
+  <!-- ===========================================
+       Loading
+  ============================================ -->
+
+  @if (loading()) {
+    <div class="account-details__loading">Loading account details...</div>
+  } @else {
+    @if (account(); as accountDetails) {
+      <!-- ===========================================
+           Account Information
+      ============================================ -->
+
+      <div class="account-details__card">
+        <h3 class="account-details__section-title">Account Information</h3>
+
+        <div class="account-details__grid">
+          <div class="account-details__item">
+            <span>Account Holder</span>
+            <strong>{{ accountDetails.accountHolder }}</strong>
+          </div>
+
+          <div class="account-details__item">
+            <span>Account Number</span>
+            <strong>{{ accountDetails.accountNumber }}</strong>
+          </div>
+
+          <div class="account-details__item">
+            <span>Account Type</span>
+            <strong>{{ accountDetails.accountType }}</strong>
+          </div>
+
+          <div class="account-details__item">
+            <span>Status</span>
+
+            <p-tag
+              [value]="accountDetails.status"
+              [severity]="getSeverity(accountDetails.status)"
+            >
+            </p-tag>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===========================================
+           Financial Information
+      ============================================ -->
+
+      <div class="account-details__card">
+        <h3 class="account-details__section-title">Financial Information</h3>
+
+        <div class="account-details__grid">
+          <div class="account-details__item account-details__item--full">
+            <span>Current Balance</span>
+
+            <strong class="account-details__balance">
+              ₹{{ accountDetails.balance | number: "1.2-2" }}
+            </strong>
+          </div>
+        </div>
+      </div>
+    }
+  }
+</section>
