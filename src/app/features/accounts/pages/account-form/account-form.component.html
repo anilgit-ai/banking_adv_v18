@@ -1,0 +1,71 @@
+<div class="account-form" [formGroup]="form()">
+  <!-- Account Holder -->
+
+  <div class="account-form__field">
+    <label for="accountHolder"> Account Holder </label>
+
+    <input
+      id="accountHolder"
+      pInputText
+      formControlName="accountHolder"
+      placeholder="Enter account holder name"
+    />
+  </div>
+
+  <!-- Account Number -->
+
+  <div class="account-form__field">
+    <label for="accountNumber"> Account Number </label>
+
+    <input
+      id="accountNumber"
+      pInputText
+      formControlName="accountNumber"
+      placeholder="Enter account number"
+    />
+  </div>
+
+  <!-- Account Type -->
+
+  <div class="account-form__field">
+    <label> Account Type </label>
+
+    <p-select
+      [options]="accountTypes"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="accountType"
+      placeholder="Select account type"
+    >
+    </p-select>
+  </div>
+
+  <!-- Opening Balance -->
+
+  <div class="account-form__field">
+    <label> Opening Balance </label>
+
+    <p-inputNumber
+      formControlName="balance"
+      mode="currency"
+      currency="INR"
+      locale="en-IN"
+    >
+    </p-inputNumber>
+  </div>
+
+  <!-- Status -->
+
+  <div class="account-form__field">
+    <label> Status </label>
+
+    <p-select
+      [options]="accountStatuses"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="status"
+      placeholder="Select status"
+    >
+    </p-select>
+  </div>
+</div>

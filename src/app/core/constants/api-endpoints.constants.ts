@@ -7,15 +7,13 @@ export const API_ENDPOINTS = {
   DASHBOARD: {
     SUMMARY: '/dashboard',
   },
-
-  USERS: '/users',
-
-  ACCOUNTS: '/accounts',
-
+  ACCOUNTS: {
+    LIST: '/accounts',
+  },
   TRANSACTIONS: {
     LIST: '/transactions',
   },
-
+  USERS: '/users',
   BENEFICIARIES: '/beneficiaries',
 
   LOANS: '/loans',

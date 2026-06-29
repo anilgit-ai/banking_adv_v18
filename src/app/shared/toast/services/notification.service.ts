@@ -214,4 +214,10 @@ export class NotificationService {
   public somethingWentWrong(): void {
     this.error(APP_CONSTANTS.TOAST_MESSAGES.SOMETHING_WENT_WRONG);
   }
+  /**
+ * Delete operation cancelled.
+ */
+public deleteCancelled(): void {
+  this.info('Account deletion was cancelled.', 'Cancelled');
+}
 }

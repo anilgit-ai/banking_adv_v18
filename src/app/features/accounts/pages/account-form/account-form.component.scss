@@ -1,0 +1,101 @@
+.account-form {
+  display: grid;
+
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+
+  gap: 1.5rem 2rem;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+
+    gap: 0.6rem;
+  }
+
+  label {
+    font-size: 0.9rem;
+    font-weight: 600;
+
+    color: #374151;
+  }
+}
+
+/* ==========================================
+   PrimeNG Controls
+========================================== */
+
+:host ::ng-deep {
+  .p-inputtext,
+  .p-select,
+  .p-inputnumber,
+  .p-inputnumber-input {
+    width: 100%;
+  }
+
+  .p-inputtext,
+  .p-inputnumber-input,
+  .p-select {
+    height: 46px;
+
+    border-radius: 10px;
+
+    border: 1px solid #d1d5db;
+
+    background: #fafafa;
+
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease;
+  }
+
+  .p-inputtext:hover,
+  .p-inputnumber-input:hover,
+  .p-select:hover {
+    border-color: #9ca3af;
+  }
+
+  .p-inputtext:focus,
+  .p-inputnumber-input:focus,
+  .p-select.p-focus {
+    border-color: #2563eb;
+
+    background: #fff;
+
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.12);
+  }
+
+  .p-select {
+    display: flex;
+    align-items: center;
+
+    padding-inline: 0.25rem;
+  }
+
+  .p-select-label {
+    display: flex;
+    align-items: center;
+  }
+
+  .p-select-trigger {
+    color: #6b7280;
+  }
+
+  .p-inputnumber-input {
+    padding-inline: 0.75rem;
+  }
+
+  input::placeholder {
+    color: #9ca3af;
+  }
+}
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media (max-width: 768px) {
+  .account-form {
+    grid-template-columns: 1fr;
+  }
+}

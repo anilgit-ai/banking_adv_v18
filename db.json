@@ -33,16 +33,62 @@
       "token": "customer-token"
     }
   ],
-
   "dashboard": {
     "totalBalance": 250000,
     "totalAccounts": 125,
     "totalCustomers": 452,
     "activeLoans": 18
   },
-
-  "accounts": [],
-
+  "accounts": [
+    {
+      "accountHolder": "John Doe",
+      "accountNumber": "1000000001",
+      "accountType": "Savings",
+      "balance": 75000,
+      "status": "ACTIVE",
+      "id": "acc-001"
+    },
+    {
+      "id": "acc-002",
+      "accountNumber": "1000000002",
+      "accountHolder": "Jane Smith",
+      "accountType": "Current",
+      "balance": 120000,
+      "status": "ACTIVE"
+    },
+    {
+      "id": "acc-003",
+      "accountNumber": "1000000003",
+      "accountHolder": "Michael Brown",
+      "accountType": "Savings",
+      "balance": 15400,
+      "status": "BLOCKED"
+    },
+    {
+      "accountHolder": "Anil kumar",
+      "accountNumber": "1000000004",
+      "accountType": "CURRENT",
+      "balance": 65000,
+      "status": "ACTIVE",
+      "id": "9dYt6Fo"
+    },
+    {
+      "accountHolder": "Ram",
+      "accountNumber": "1000000005",
+      "accountType": "SAVINGS",
+      "balance": 10000,
+      "status": "ACTIVE",
+      "id": "HagEGoz"
+    },
+    {
+      "accountHolder": "Ganesh",
+      "accountNumber": "1000000006",
+      "accountType": "CURRENT",
+      "balance": 32000,
+      "status": "ACTIVE",
+      "id": "LVKiQ_b"
+    }
+  ],
   "transactions": [
     {
       "id": "txn-001",
@@ -69,12 +115,8 @@
       "amount": 2400
     }
   ],
-
   "beneficiaries": [],
-
   "loans": [],
-
   "notifications": [],
-
   "auditLogs": []
 }

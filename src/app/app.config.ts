@@ -8,12 +8,21 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './core/interceptors/auth.interceptor';
 import { loaderInterceptor } from './core/interceptors/loader.interceptor';
 import { errorInterceptor } from './core/interceptors/error.interceptor';
+import { ConfirmationService } from 'primeng/api';
+import { providePrimeNG } from 'primeng/config';
+import Aura from '@primeng/themes/aura';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(appRoutes),
     provideAnimations(),
+    providePrimeNG({
+      theme: {
+        preset: Aura,
+      },
+    }),
+
     provideToastr({
       timeOut: 3000,
       positionClass: 'toast-top-right',
@@ -22,5 +31,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(
       withInterceptors([authInterceptor, loaderInterceptor, errorInterceptor]),
     ),
+    ConfirmationService,
   ],
 };
