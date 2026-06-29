@@ -46,6 +46,14 @@ export const appRoutes: Routes = [
             (m) => m.ACCOUNTS_ROUTES,
           ),
       },
+      {
+        path: ROUTES.APP.CUSTOMERS,
+
+        loadChildren: () =>
+          import('./features/customers/customers.routes').then(
+            (m) => m.CUSTOMERS_ROUTES,
+          ),
+      },
     ],
   },
 

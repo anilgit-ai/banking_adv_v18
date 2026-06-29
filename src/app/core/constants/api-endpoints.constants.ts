@@ -10,6 +10,9 @@ export const API_ENDPOINTS = {
   ACCOUNTS: {
     LIST: '/accounts',
   },
+  CUSTOMERS: {
+    LIST: '/customers',
+  },
   TRANSACTIONS: {
     LIST: '/transactions',
   },

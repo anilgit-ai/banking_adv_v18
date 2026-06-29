@@ -19,6 +19,15 @@
 
     <span>Accounts</span>
   </a>
+  <a
+    [routerLink]="['/app', routes.APP.CUSTOMERS]"
+    routerLinkActive="sidebar__link--active"
+    class="sidebar__link"
+  >
+    <i class="pi pi-users"></i>
+
+    <span>Customers</span>
+  </a>
 
   <a
     [routerLink]="['/app', routes.APP.TRANSACTIONS]"

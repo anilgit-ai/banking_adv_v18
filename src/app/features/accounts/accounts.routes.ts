@@ -12,7 +12,7 @@ export const ACCOUNTS_ROUTES: Routes = [
   {
     path: '',
     component: AccountsListComponent,
-    title: 'Accounts',
+    title: 'Accounts | Banking Management',
   },
 
   /**
@@ -21,7 +21,7 @@ export const ACCOUNTS_ROUTES: Routes = [
   {
     path: 'new',
     component: CreateAccountComponent,
-    title: 'Create Account',
+    title: 'Create Account | Banking Management',
   },
 
   /**
@@ -30,7 +30,7 @@ export const ACCOUNTS_ROUTES: Routes = [
   {
     path: ':id/edit',
     component: EditAccountComponent,
-    title: 'Edit Account',
+    title: 'Edit Account | Banking Management',
   },
 
   /**
@@ -39,6 +39,6 @@ export const ACCOUNTS_ROUTES: Routes = [
   {
     path: ':id',
     component: AccountDetailsComponent,
-    title: 'Account Details',
+    title: 'Account Details | Banking Management',
   },
 ];
