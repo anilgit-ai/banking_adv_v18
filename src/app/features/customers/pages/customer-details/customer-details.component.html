@@ -1,1 +1,145 @@
-<p>customer-details works!</p>
+<section class="customer-details">
+  <!-- ===========================================
+       Page Header
+  ============================================ -->
+
+  <header class="customer-details__header">
+    <div>
+      <h2>Customer Details</h2>
+
+      <p>View complete customer information.</p>
+    </div>
+
+    @if (customer()) {
+      <button
+        pButton
+        type="button"
+        label="Edit Customer"
+        icon="pi pi-pencil"
+        (click)="editCustomer()"
+      ></button>
+    }
+  </header>
+
+  <!-- ===========================================
+       Loading
+  ============================================ -->
+
+  @if (loading()) {
+    <div class="customer-details__loading">Loading customer details...</div>
+  } @else {
+    @let customerData = customer();
+
+    @if (customerData) {
+      <div class="customer-details__grid">
+        <!-- ===========================================
+             Customer Information
+        ============================================ -->
+
+        <div class="customer-details__card">
+          <h3>Customer Information</h3>
+
+          <div class="customer-details__info">
+            <label>Customer ID</label>
+
+            <span>{{ customerData.customerId }}</span>
+          </div>
+
+          <div class="customer-details__info">
+            <label>Full Name</label>
+
+            <span>{{ customerData.fullName }}</span>
+          </div>
+
+          <div class="customer-details__info">
+            <label>Gender</label>
+
+            <span>{{ customerData.gender }}</span>
+          </div>
+
+          <div class="customer-details__info">
+            <label>Status</label>
+
+            <p-tag
+              [value]="customerData.status"
+              [severity]="getSeverity(customerData.status)"
+            >
+            </p-tag>
+          </div>
+        </div>
+
+        <!-- ===========================================
+             Contact Information
+        ============================================ -->
+
+        <div class="customer-details__card">
+          <h3>Contact Information</h3>
+
+          <div class="customer-details__info">
+            <label>Email</label>
+
+            <span>{{ customerData.email }}</span>
+          </div>
+
+          <div class="customer-details__info">
+            <label>Phone Number</label>
+
+            <span>{{ customerData.phoneNumber }}</span>
+          </div>
+
+          <div class="customer-details__info">
+            <label>Address</label>
+
+            <span>{{ customerData.address }}</span>
+          </div>
+        </div>
+
+        <!-- ===========================================
+             Identity Information
+        ============================================ -->
+
+        <div class="customer-details__card customer-details__card--full">
+          <h3>Identity Information</h3>
+
+          <div class="customer-details__identity">
+            <div class="customer-details__info">
+              <label>Aadhaar Number</label>
+
+              <span>{{ customerData.aadhaarNumber }}</span>
+            </div>
+
+            <div class="customer-details__info">
+              <label>PAN Number</label>
+
+              <span>{{ customerData.panNumber }}</span>
+            </div>
+
+            <div class="customer-details__info">
+              <label>Date of Birth</label>
+
+              <span>
+                {{ customerData.dateOfBirth | date: "dd MMM yyyy" }}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===========================================
+           Actions
+      ============================================ -->
+
+      <div class="customer-details__actions">
+        <button
+          pButton
+          type="button"
+          label="Back"
+          icon="pi pi-arrow-left"
+          severity="secondary"
+          outlined
+          (click)="goBack()"
+        ></button>
+      </div>
+    }
+  }
+</section>

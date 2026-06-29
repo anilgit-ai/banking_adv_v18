@@ -1,1 +1,61 @@
-<p>customer-filters works!</p>
+<div class="customer-filters">
+  <!-- ===========================================
+       Search
+  ============================================ -->
+
+  <div class="customer-filters__search">
+    <i class="pi pi-search"></i>
+
+    <input
+      pInputText
+      type="text"
+      placeholder="Search customer..."
+      [ngModel]="searchKeyword()"
+      (ngModelChange)="searchKeywordChange.emit($event)"
+    />
+  </div>
+
+  <!-- ===========================================
+       Gender
+  ============================================ -->
+
+  <p-select
+    class="customer-filters__select"
+    [options]="genders"
+    optionLabel="label"
+    optionValue="value"
+    placeholder="Gender"
+    [ngModel]="selectedGender()"
+    (ngModelChange)="genderChange.emit($event)"
+  >
+  </p-select>
+
+  <!-- ===========================================
+       Status
+  ============================================ -->
+
+  <p-select
+    class="customer-filters__select"
+    [options]="statuses"
+    optionLabel="label"
+    optionValue="value"
+    placeholder="Status"
+    [ngModel]="selectedStatus()"
+    (ngModelChange)="statusChange.emit($event)"
+  >
+  </p-select>
+
+  <!-- ===========================================
+       Clear Filters
+  ============================================ -->
+
+  <button
+    pButton
+    type="button"
+    label="Clear Filters"
+    icon="pi pi-filter-slash"
+    severity="secondary"
+    outlined
+    (click)="clearFilters.emit()"
+  ></button>
+</div>

@@ -5,8 +5,8 @@ export const CUSTOMERS_ROUTES: Routes = [
     path: '',
     title: 'Customers | Banking Mangement',
     loadComponent: () =>
-      import('./pages/customer-list/customer-list.component').then(
-        (c) => c.CustomerListComponent,
+      import('./pages/customers-list/customers-list.component').then(
+        (c) => c.CustomersListComponent,
       ),
   },
   {

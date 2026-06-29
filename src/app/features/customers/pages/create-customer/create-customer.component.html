@@ -1,1 +1,49 @@
-<p>create-customer works!</p>
+<section class="create-customer">
+  <!-- ===========================================
+       Page Header
+  ============================================ -->
+
+  <header class="create-customer__header">
+    <div>
+      <h2 class="create-customer__title">Create Customer</h2>
+
+      <p class="create-customer__subtitle">
+        Register a new customer in the banking system.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===========================================
+       Customer Form
+  ============================================ -->
+
+  <div class="create-customer__card">
+    <app-customer-form [form]="customerForm"> </app-customer-form>
+  </div>
+
+  <!-- ===========================================
+       Footer Actions
+  ============================================ -->
+
+  <footer class="create-customer__actions">
+    <button
+      pButton
+      type="button"
+      label="Cancel"
+      icon="pi pi-times"
+      severity="secondary"
+      outlined
+      (click)="cancel()"
+    ></button>
+
+    <button
+      pButton
+      type="button"
+      label="Create Customer"
+      icon="pi pi-check"
+      [loading]="saving()"
+      [disabled]="customerForm.invalid || saving()"
+      (click)="createCustomer()"
+    ></button>
+  </footer>
+</section>

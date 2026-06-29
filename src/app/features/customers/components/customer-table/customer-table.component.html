@@ -1,1 +1,141 @@
-<p>customer-table works!</p>
+<p-table
+  [value]="customers()"
+  responsiveLayout="scroll"
+  stripedRows
+  showGridlines
+  sortMode="single"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[10, 20, 50]"
+  [showCurrentPageReport]="true"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} customers"
+>
+  <!-- ===========================================
+       Header
+  ============================================ -->
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="customerId">
+        Customer ID
+        <p-sortIcon field="customerId"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="fullName">
+        Full Name
+        <p-sortIcon field="fullName"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="email">
+        Email
+        <p-sortIcon field="email"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="phoneNumber">
+        Phone
+        <p-sortIcon field="phoneNumber"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="gender">
+        Gender
+        <p-sortIcon field="gender"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="status">
+        Status
+        <p-sortIcon field="status"></p-sortIcon>
+      </th>
+
+      <th class="actions-column">Actions</th>
+    </tr>
+  </ng-template>
+
+  <!-- ===========================================
+       Body
+  ============================================ -->
+
+  <ng-template pTemplate="body" let-customer>
+    <tr>
+      <td>
+        <span [innerHTML]="customer.customerId | highlight: searchKeyword()">
+        </span>
+      </td>
+
+      <td>
+        <span [innerHTML]="customer.fullName | highlight: searchKeyword()">
+        </span>
+      </td>
+
+      <td>
+        <span [innerHTML]="customer.email | highlight: searchKeyword()"> </span>
+      </td>
+
+      <td>
+        {{ customer.phoneNumber }}
+      </td>
+
+      <td>
+        {{ customer.gender }}
+      </td>
+
+      <td>
+        <p-tag
+          [value]="customer.status"
+          [severity]="getSeverity(customer.status)"
+        >
+        </p-tag>
+      </td>
+
+      <td>
+        <div class="table-actions">
+          <button
+            pButton
+            type="button"
+            icon="pi pi-eye"
+            [text]="true"
+            rounded
+            [routerLink]="['/app/customers', customer.id]"
+          ></button>
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            severity="secondary"
+            [text]="true"
+            rounded
+            [routerLink]="['/app/customers', customer.id, 'edit']"
+          ></button>
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-trash"
+            severity="danger"
+            [text]="true"
+            rounded
+            (click)="delete.emit(customer.id)"
+          ></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+
+  <!-- ===========================================
+       Empty State
+  ============================================ -->
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="7">
+        <div class="empty-state">
+          <i class="pi pi-users"></i>
+
+          <h3>No Customers Found</h3>
+
+          <p>Try changing your search or filters.</p>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>

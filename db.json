@@ -98,7 +98,7 @@
       "phoneNumber": "9876543210",
       "gender": "MALE",
       "dateOfBirth": "1995-08-15",
-      "aadhaarNumber": "123412341234",
+      "aadhaarNumber": "123412341235",
       "panNumber": "ABCDE1234F",
       "address": "Hyderabad",
       "status": "ACTIVE"
@@ -115,6 +115,32 @@
       "panNumber": "PQRSX5678K",
       "address": "Bengaluru",
       "status": "ACTIVE"
+    },
+    {
+      "fullName": "Anil Kumar M",
+      "email": "aanil353@gmail.com",
+      "phoneNumber": "9515515445",
+      "gender": "MALE",
+      "dateOfBirth": "1993-04-13",
+      "aadhaarNumber": "947100146365",
+      "panNumber": "ABGDE1234F",
+      "address": "EWS- 744, Bharath Nagar, Moosapet, Hyderabad.",
+      "status": "ACTIVE",
+      "customerId": "CUST1003",
+      "id": "5a6b0b49-18b1-47e7-ac25-6695b2aab99c"
+    },
+    {
+      "fullName": "Sunil Reddy",
+      "email": "sunil@gmail.com",
+      "phoneNumber": "9491821331",
+      "gender": "MALE",
+      "dateOfBirth": "1992-02-16",
+      "aadhaarNumber": "947100146368",
+      "panNumber": "MBGRE1234F",
+      "address": "EWS-755, Bharath Nagar, Hyderabad.",
+      "status": "ACTIVE",
+      "customerId": "CUST1004",
+      "id": "dfa1b1a0-7965-4d20-9a5b-2f7ff6c8c0d0"
     }
   ],
   "transactions": [

@@ -1,0 +1,78 @@
+.customer-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 1.5rem 2rem;
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+
+    label {
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #374151;
+
+      span {
+        color: #dc2626;
+      }
+    }
+  }
+
+  &__field--full {
+    grid-column: 1 / -1;
+  }
+
+  &__error {
+    color: #dc2626;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-top: 0.15rem;
+  }
+}
+
+:host ::ng-deep {
+  .p-inputtext,
+  .p-select,
+  .p-datepicker,
+  .p-inputtextarea {
+    width: 100%;
+  }
+
+  .p-inputtext,
+  .p-select,
+  .p-datepicker {
+    height: 44px;
+    border-radius: 10px;
+  }
+
+  .p-inputtextarea {
+    min-height: 110px;
+    resize: vertical;
+    border-radius: 10px;
+  }
+
+  .p-inputtext.ng-invalid.ng-touched,
+  .p-inputtextarea.ng-invalid.ng-touched {
+    border-color: #dc2626;
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.12);
+  }
+
+  .p-inputtext:enabled:focus,
+  .p-inputtextarea:enabled:focus,
+  .p-select:not(.p-disabled).p-focus,
+  .p-datepicker:not(.p-disabled).p-focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+}
+
+@media (max-width: 768px) {
+  .customer-form {
+    grid-template-columns: 1fr;
+
+    &__field--full {
+      grid-column: auto;
+    }
+  }
+}
