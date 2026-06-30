@@ -54,6 +54,13 @@ export const appRoutes: Routes = [
             (m) => m.CUSTOMERS_ROUTES,
           ),
       },
+      {
+        path: ROUTES.APP.TRANSACTIONS,
+        loadChildren: () =>
+          import('./features/transactions/transaction.routes').then(
+            (m) => m.TRANSACTIONS_ROUTES,
+          ),
+      },
     ],
   },
 

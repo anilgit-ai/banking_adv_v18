@@ -1,0 +1,65 @@
+<section class="transactions">
+  <!-- ===========================================
+       Page Header
+  ============================================ -->
+
+  <header class="transactions__header">
+    <div>
+      <h2 class="transactions__title">Transactions</h2>
+
+      <p class="transactions__subtitle">Manage all banking transactions.</p>
+    </div>
+
+    <button
+      pButton
+      type="button"
+      label="New Transaction"
+      icon="pi pi-plus"
+      (click)="createTransaction()"
+    ></button>
+  </header>
+
+  <!-- ===========================================
+       Filters
+  ============================================ -->
+
+  <app-transaction-filters
+    [searchKeyword]="searchKeyword()"
+    [selectedTransactionType]="selectedType()"
+    [selectedStatus]="selectedStatus()"
+    (searchKeywordChange)="searchKeyword.set($event); applyFilters()"
+    (transactionTypeChange)="selectedType.set($event); applyFilters()"
+    (statusChange)="selectedStatus.set($event); applyFilters()"
+    (clearFilters)="clearFilters()"
+  >
+  </app-transaction-filters>
+
+  <!-- ===========================================
+       Error State
+  ============================================ -->
+
+  @if (hasError()) {
+    <div class="transactions__error">Failed to load transactions.</div>
+  }
+
+  <!-- ===========================================
+       Loading State
+  ============================================ -->
+
+  @else if (loading()) {
+    <div class="transactions__loading">Loading transactions...</div>
+  }
+
+  <!-- ===========================================
+       Transaction Table
+  ============================================ -->
+
+  @else {
+    <app-transaction-table
+      [transactions]="transactions()"
+      [searchKeyword]="searchKeyword()"
+      (delete)="deleteTransaction($event)"
+    >
+    </app-transaction-table>
+  }
+</section>

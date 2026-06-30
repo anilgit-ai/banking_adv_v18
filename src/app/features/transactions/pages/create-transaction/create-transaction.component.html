@@ -1,0 +1,68 @@
+<section class="create-transaction">
+  <!-- ===========================================
+       Header
+  ============================================ -->
+
+  <header class="create-transaction__header">
+    <div>
+      <h2 class="create-transaction__title">Create Transaction</h2>
+
+      <p class="create-transaction__subtitle">
+        Record a new banking transaction.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===========================================
+       Loading
+  ============================================ -->
+
+  @if (loading()) {
+    <div class="create-transaction__loading">
+      <i class="pi pi-spin pi-spinner"></i>
+
+      <span>Loading customers and accounts...</span>
+    </div>
+  }
+
+  <!-- ===========================================
+       Form
+  ============================================ -->
+
+  @else {
+    <div class="create-transaction__card">
+      <app-transaction-form
+        [form]="transactionForm"
+        [customers]="customers()"
+        [accounts]="accounts()"
+      >
+      </app-transaction-form>
+    </div>
+
+    <!-- ===========================================
+         Actions
+    ============================================ -->
+
+    <footer class="create-transaction__actions">
+      <button
+        pButton
+        type="button"
+        label="Cancel"
+        icon="pi pi-times"
+        severity="secondary"
+        outlined
+        (click)="cancel()"
+      ></button>
+
+      <button
+        pButton
+        type="button"
+        label="Create Transaction"
+        icon="pi pi-check"
+        [loading]="saving()"
+        [disabled]="transactionForm.invalid || saving()"
+        (click)="createTransaction()"
+      ></button>
+    </footer>
+  }
+</section>

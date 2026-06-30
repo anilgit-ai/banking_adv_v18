@@ -1,0 +1,114 @@
+:host {
+  display: block;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.actions-column {
+  width: 140px;
+  min-width: 140px;
+  text-align: center;
+}
+
+.table-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+  gap: 0.75rem;
+  color: #64748b;
+
+  i {
+    font-size: 3rem;
+    color: #cbd5e1;
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #334155;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
+}
+
+:host ::ng-deep {
+  /* ==========================================
+     Data Table
+  ========================================== */
+
+  .p-datatable {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .p-datatable-thead > tr > th {
+    background: #f8fafc;
+    color: #1f2937;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+
+  .p-datatable-tbody > tr:hover {
+    background: #f8fafc;
+  }
+
+  .p-datatable-tbody > tr > td {
+    vertical-align: middle;
+  }
+
+  /* ==========================================
+     Paginator
+  ========================================== */
+
+  .p-paginator {
+    border-top: 1px solid #e5e7eb;
+    padding: 0.75rem 1rem;
+    background: #ffffff;
+  }
+
+  /* ==========================================
+     Sort Icons
+  ========================================== */
+
+  .p-sortable-column-icon {
+    color: #64748b;
+  }
+
+  /* ==========================================
+     Action Buttons
+  ========================================== */
+
+  .table-actions .p-button {
+    width: 2rem;
+    height: 2rem;
+    padding: 0;
+  }
+
+  /* ==========================================
+     Search Highlight
+  ========================================== */
+
+  .search-highlight {
+    background: #fef08a;
+    color: #111827;
+    padding: 0 0.2rem;
+    border-radius: 4px;
+    font-weight: 700;
+  }
+}

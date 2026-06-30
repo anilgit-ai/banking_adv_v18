@@ -1,0 +1,186 @@
+<div class="transaction-form" [formGroup]="form()">
+  <!-- ===========================================
+       Customer
+  ============================================ -->
+
+  <div class="transaction-form__field">
+    <label> Customer <span>*</span> </label>
+
+    <p-select
+      [options]="customers()"
+      optionLabel="fullName"
+      optionValue="id"
+      formControlName="customerId"
+      placeholder="Select customer"
+    >
+    </p-select>
+
+    @if (
+      form().controls.customerId.touched && form().controls.customerId.invalid
+    ) {
+      <small class="transaction-form__error"> Customer is required. </small>
+    }
+  </div>
+
+  <!-- ===========================================
+       Account
+  ============================================ -->
+
+  <div class="transaction-form__field">
+    <label> Account <span>*</span> </label>
+
+    <p-select
+      [options]="filteredAccounts()"
+      optionLabel="accountNumber"
+      optionValue="id"
+      formControlName="accountId"
+      placeholder="Select account"
+    >
+    </p-select>
+
+    @if (
+      form().controls.accountId.touched && form().controls.accountId.invalid
+    ) {
+      <small class="transaction-form__error"> Account is required. </small>
+    }
+  </div>
+
+  <!-- ===========================================
+       Available Balance
+  ============================================ -->
+
+  @if (getSelectedAccountBalance() !== null) {
+    <div class="transaction-form__balance">
+      <span class="transaction-form__balance-label"> Available Balance </span>
+
+      <strong class="transaction-form__balance-value">
+        ₹{{ getSelectedAccountBalance()! | number: "1.2-2" }}
+      </strong>
+    </div>
+  }
+
+  <!-- ===========================================
+       Transaction Type
+  ============================================ -->
+
+  <div class="transaction-form__field">
+    <label> Transaction Type <span>*</span> </label>
+
+    <p-select
+      [options]="transactionTypes"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="transactionType"
+      placeholder="Select transaction type"
+    >
+    </p-select>
+
+    @if (
+      form().controls.transactionType.touched &&
+      form().controls.transactionType.invalid
+    ) {
+      <small class="transaction-form__error">
+        Transaction type is required.
+      </small>
+    }
+  </div>
+
+  <!-- ===========================================
+       Amount
+  ============================================ -->
+
+  <div class="transaction-form__field">
+    <label> Amount <span>*</span> </label>
+
+    <p-inputNumber
+      formControlName="amount"
+      mode="currency"
+      currency="INR"
+      locale="en-IN"
+      [min]="1"
+      placeholder="Enter amount"
+    >
+    </p-inputNumber>
+
+    @if (form().controls.amount.touched && form().controls.amount.invalid) {
+      <small class="transaction-form__error">
+        @if (form().controls.amount.errors?.["required"]) {
+          Amount is required.
+        }
+
+        @if (form().controls.amount.errors?.["min"]) {
+          Amount must be greater than zero.
+        }
+      </small>
+    }
+  </div>
+
+  <!-- ===========================================
+       Transaction Date
+  ============================================ -->
+
+  <div class="transaction-form__field">
+    <label> Transaction Date <span>*</span> </label>
+
+    <p-datepicker
+      formControlName="transactionDate"
+      [showIcon]="true"
+      [maxDate]="today"
+      dateFormat="dd/mm/yy"
+      appendTo="body"
+    >
+    </p-datepicker>
+
+    @if (
+      form().controls.transactionDate.touched &&
+      form().controls.transactionDate.invalid
+    ) {
+      <small class="transaction-form__error">
+        Transaction date is required.
+      </small>
+    }
+  </div>
+
+  <!-- ===========================================
+       Status
+  ============================================ -->
+
+  <div class="transaction-form__field">
+    <label> Status <span>*</span> </label>
+
+    <p-select
+      [options]="transactionStatuses"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="status"
+      placeholder="Select status"
+    >
+    </p-select>
+
+    @if (form().controls.status.touched && form().controls.status.invalid) {
+      <small class="transaction-form__error"> Status is required. </small>
+    }
+  </div>
+
+  <!-- ===========================================
+       Description
+  ============================================ -->
+
+  <div class="transaction-form__field transaction-form__field--full">
+    <label> Description <span>*</span> </label>
+
+    <textarea
+      pInputTextarea
+      rows="4"
+      formControlName="description"
+      placeholder="Enter transaction description"
+    >
+    </textarea>
+
+    @if (
+      form().controls.description.touched && form().controls.description.invalid
+    ) {
+      <small class="transaction-form__error"> Description is required. </small>
+    }
+  </div>
+</div>
