@@ -1,0 +1,196 @@
+<section class="transaction-details">
+  <!-- ===========================================
+       Header
+  ============================================ -->
+
+  <header class="transaction-details__header">
+    <div>
+      <h2 class="transaction-details__title">Transaction Details</h2>
+
+      <p class="transaction-details__subtitle">
+        View banking transaction information.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===========================================
+       Loading
+  ============================================ -->
+
+  @if (loading()) {
+    <div class="transaction-details__loading">
+      <i class="pi pi-spin pi-spinner"></i>
+
+      <span>Loading transaction...</span>
+    </div>
+  }
+
+  <!-- ===========================================
+       Error
+  ============================================ -->
+
+  @else if (hasError()) {
+    <div class="transaction-details__error">
+      Failed to load transaction details.
+    </div>
+  }
+
+  <!-- ===========================================
+       Content
+  ============================================ -->
+
+  @else {
+    @if (transaction(); as transaction) {
+      <!-- ============================
+           Transaction Information
+      ============================= -->
+
+      <div class="details-card">
+        <h3 class="details-card__title">Transaction Information</h3>
+
+        <div class="details-grid">
+          <div class="details-item">
+            <label>Transaction Number</label>
+            <span>{{ transaction.transactionNumber }}</span>
+          </div>
+
+          <div class="details-item">
+            <label>Transaction Type</label>
+            <span>{{ transaction.transactionType }}</span>
+          </div>
+
+          <div class="details-item">
+            <label>Amount</label>
+            <span> ₹{{ transaction.amount | number: "1.2-2" }} </span>
+          </div>
+
+          <div class="details-item">
+            <label>Status</label>
+
+            <p-tag
+              [value]="transaction.status"
+              [severity]="getStatusSeverity(transaction.status)"
+            >
+            </p-tag>
+          </div>
+
+          <div class="details-item">
+            <label>Transaction Date</label>
+
+            <span>
+              {{ transaction.transactionDate | date: "dd MMM yyyy" }}
+            </span>
+          </div>
+
+          <div class="details-item">
+            <label>Balance After Transaction</label>
+
+            <span>
+              ₹{{ transaction.balanceAfterTransaction | number: "1.2-2" }}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ============================
+           Customer Information
+      ============================= -->
+
+      @if (customer(); as customer) {
+        <div class="details-card">
+          <h3 class="details-card__title">Customer Information</h3>
+
+          <div class="details-grid">
+            <div class="details-item">
+              <label>Customer ID</label>
+              <span>{{ customer.customerId }}</span>
+            </div>
+
+            <div class="details-item">
+              <label>Customer Name</label>
+              <span>{{ customer.fullName }}</span>
+            </div>
+
+            <div class="details-item">
+              <label>Email</label>
+              <span>{{ customer.email }}</span>
+            </div>
+
+            <div class="details-item">
+              <label>Phone Number</label>
+              <span>{{ customer.phoneNumber }}</span>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- ============================
+           Account Information
+      ============================= -->
+
+      @if (account(); as account) {
+        <div class="details-card">
+          <h3 class="details-card__title">Account Information</h3>
+
+          <div class="details-grid">
+            <div class="details-item">
+              <label>Account Number</label>
+              <span>{{ account.accountNumber }}</span>
+            </div>
+
+            <div class="details-item">
+              <label>Account Type</label>
+              <span>{{ account.accountType }}</span>
+            </div>
+
+            <div class="details-item">
+              <label>Current Balance</label>
+              <span> ₹{{ account.balance | number: "1.2-2" }} </span>
+            </div>
+
+            <div class="details-item">
+              <label>Status</label>
+              <span>{{ account.status }}</span>
+            </div>
+          </div>
+        </div>
+      }
+
+      <!-- ============================
+           Description
+      ============================= -->
+
+      <div class="details-card">
+        <h3 class="details-card__title">Description</h3>
+
+        <p class="transaction-description">
+          {{ transaction.description }}
+        </p>
+      </div>
+
+      <!-- ============================
+           Actions
+      ============================= -->
+
+      <div class="transaction-details__actions">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-arrow-left"
+          label="Back"
+          severity="secondary"
+          outlined
+          (click)="goBack()"
+        ></button>
+
+        <button
+          pButton
+          type="button"
+          icon="pi pi-pencil"
+          label="Edit Transaction"
+          [routerLink]="['/app/transactions', transaction.id, 'edit']"
+        ></button>
+      </div>
+    }
+  }
+</section>

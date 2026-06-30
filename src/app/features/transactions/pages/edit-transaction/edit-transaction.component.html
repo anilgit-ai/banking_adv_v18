@@ -1,0 +1,68 @@
+<section class="edit-transaction">
+  <!-- ===========================================
+       Header
+  ============================================ -->
+
+  <header class="edit-transaction__header">
+    <div>
+      <h2 class="edit-transaction__title">Edit Transaction</h2>
+
+      <p class="edit-transaction__subtitle">
+        Update banking transaction details.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===========================================
+       Loading
+  ============================================ -->
+
+  @if (loading()) {
+    <div class="edit-transaction__loading">
+      <i class="pi pi-spin pi-spinner"></i>
+
+      <span>Loading transaction...</span>
+    </div>
+  }
+
+  <!-- ===========================================
+       Form
+  ============================================ -->
+
+  @else {
+    <div class="edit-transaction__card">
+      <app-transaction-form
+        [form]="transactionForm"
+        [customers]="customers()"
+        [accounts]="accounts()"
+      >
+      </app-transaction-form>
+    </div>
+
+    <!-- ===========================================
+         Actions
+    ============================================ -->
+
+    <footer class="edit-transaction__actions">
+      <button
+        pButton
+        type="button"
+        label="Cancel"
+        icon="pi pi-times"
+        severity="secondary"
+        outlined
+        (click)="cancel()"
+      ></button>
+
+      <button
+        pButton
+        type="button"
+        label="Update Transaction"
+        icon="pi pi-check"
+        [loading]="saving()"
+        [disabled]="transactionForm.invalid || saving()"
+        (click)="updateTransaction()"
+      ></button>
+    </footer>
+  }
+</section>

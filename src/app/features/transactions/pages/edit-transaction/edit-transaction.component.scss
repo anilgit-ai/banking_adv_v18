@@ -1,58 +1,47 @@
-.edit-customer {
+.edit-transaction {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  padding: 2rem;
+
   max-width: 1100px;
   margin: 0 auto;
+  padding: 2rem;
+
   /* ==========================================
      Header
   ========================================== */
 
   &__header {
     display: flex;
-
     justify-content: space-between;
-
     align-items: center;
-
     gap: 1rem;
-
     flex-wrap: wrap;
   }
 
   &__title {
     margin: 0;
-
     font-size: 2rem;
-
     font-weight: 700;
-
     color: #1f2937;
   }
 
   &__subtitle {
-    margin-top: 0.4rem;
-
+    margin-top: 0.35rem;
     color: #6b7280;
-
     font-size: 0.95rem;
   }
 
   /* ==========================================
-     Form Card
+     Card
   ========================================== */
 
   &__card {
-    background: #ffffff;
-
+    background: #fff;
     border: 1px solid #e5e7eb;
-
     border-radius: 14px;
-
     padding: 2rem;
-
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+    box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
   }
 
   /* ==========================================
@@ -60,55 +49,35 @@
   ========================================== */
 
   &__loading {
+    min-height: 320px;
+
     display: flex;
-
     flex-direction: column;
-
     justify-content: center;
-
     align-items: center;
-
     gap: 1rem;
 
-    min-height: 350px;
-
-    background: #ffffff;
-
+    background: #fff;
     border: 1px solid #e5e7eb;
-
     border-radius: 14px;
 
     color: #64748b;
-
     font-weight: 600;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 
     i {
       font-size: 2.5rem;
-
       color: #2563eb;
-    }
-
-    span {
-      font-size: 1rem;
     }
   }
 
   /* ==========================================
-     Footer Actions
+     Actions
   ========================================== */
 
   &__actions {
     display: flex;
-
     justify-content: flex-end;
-
-    align-items: center;
-
     gap: 1rem;
-
-    margin-top: 0.5rem;
   }
 }
 
@@ -118,23 +87,15 @@
 
 :host ::ng-deep {
   .p-button {
-    min-width: 170px;
-
+    min-width: 180px;
     height: 44px;
-
     border-radius: 10px;
-
     font-weight: 600;
-
-    transition: all 0.25s ease;
   }
 
   .p-button:hover {
     transform: translateY(-1px);
-  }
-
-  .p-button:disabled {
-    opacity: 0.7;
+    transition: all 0.2s ease;
   }
 }
 
@@ -143,14 +104,11 @@
 ========================================== */
 
 @media (max-width: 768px) {
-  .edit-customer {
+  .edit-transaction {
     padding: 1rem;
-
-    gap: 1.5rem;
 
     &__header {
       flex-direction: column;
-
       align-items: flex-start;
     }
 
@@ -160,14 +118,10 @@
 
     &__actions {
       flex-direction: column-reverse;
-
-      .p-button {
-        width: 100%;
-      }
     }
 
-    &__loading {
-      min-height: 250px;
+    :host ::ng-deep .p-button {
+      width: 100%;
     }
   }
 }

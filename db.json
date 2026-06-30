@@ -41,52 +41,31 @@
   },
   "accounts": [
     {
-      "accountHolder": "John Doe",
+      "id": "acc-001",
+      "customerId": "cust-001",
       "accountNumber": "1000000001",
-      "accountType": "Savings",
+      "accountHolder": "John Doe",
+      "accountType": "SAVINGS",
       "balance": 75000,
-      "status": "ACTIVE",
-      "id": "acc-001"
+      "status": "ACTIVE"
     },
     {
       "id": "acc-002",
+      "customerId": "cust-002",
       "accountNumber": "1000000002",
       "accountHolder": "Jane Smith",
-      "accountType": "Current",
+      "accountType": "CURRENT",
       "balance": 120000,
       "status": "ACTIVE"
     },
     {
       "id": "acc-003",
+      "customerId": "cust-003",
       "accountNumber": "1000000003",
       "accountHolder": "Michael Brown",
       "accountType": "Savings",
       "balance": 15400,
       "status": "BLOCKED"
-    },
-    {
-      "accountHolder": "Anil kumar",
-      "accountNumber": "1000000004",
-      "accountType": "CURRENT",
-      "balance": 65000,
-      "status": "ACTIVE",
-      "id": "9dYt6Fo"
-    },
-    {
-      "accountHolder": "Ram",
-      "accountNumber": "1000000005",
-      "accountType": "SAVINGS",
-      "balance": 10000,
-      "status": "ACTIVE",
-      "id": "HagEGoz"
-    },
-    {
-      "accountHolder": "Ganesh",
-      "accountNumber": "1000000006",
-      "accountType": "CURRENT",
-      "balance": 32000,
-      "status": "ACTIVE",
-      "id": "LVKiQ_b"
     }
   ],
   "customers": [
@@ -130,7 +109,7 @@
       "id": "5a6b0b49-18b1-47e7-ac25-6695b2aab99c"
     },
     {
-      "fullName": "Sunil Reddy",
+      "fullName": "Sunil Reddy M",
       "email": "sunil@gmail.com",
       "phoneNumber": "9491821331",
       "gender": "MALE",
@@ -146,27 +125,39 @@
   "transactions": [
     {
       "id": "txn-001",
-      "referenceNumber": "TXN-20260626-001",
-      "transactionDate": "2026-06-26",
+      "transactionNumber": "TXN100001",
+      "accountId": "acc-001",
+      "customerId": "cust-001",
+      "transactionType": "CREDIT",
+      "amount": 50000,
       "description": "Salary Credit",
-      "type": "CREDIT",
-      "amount": 50000
+      "transactionDate": "2026-06-26",
+      "status": "SUCCESS",
+      "balanceAfterTransaction": 75000
     },
     {
       "id": "txn-002",
-      "referenceNumber": "TXN-20260625-002",
-      "transactionDate": "2026-06-25",
+      "transactionNumber": "TXN100002",
+      "accountId": "acc-001",
+      "customerId": "cust-001",
+      "transactionType": "DEBIT",
+      "amount": 2500,
       "description": "ATM Withdrawal",
-      "type": "DEBIT",
-      "amount": 5000
+      "transactionDate": "2026-06-27",
+      "status": "SUCCESS",
+      "balanceAfterTransaction": 122500
     },
     {
       "id": "txn-003",
-      "referenceNumber": "TXN-20260624-003",
-      "transactionDate": "2026-06-24",
-      "description": "Electricity Bill",
-      "type": "DEBIT",
-      "amount": 2400
+      "transactionNumber": "TXN100003",
+      "accountId": "acc-002",
+      "customerId": "cust-002",
+      "transactionType": "CREDIT",
+      "amount": 15000,
+      "description": "Cash Deposit",
+      "transactionDate": "2026-06-28",
+      "status": "SUCCESS",
+      "balanceAfterTransaction": 135000
     }
   ],
   "beneficiaries": [],

@@ -1,0 +1,53 @@
+<div class="transaction-filters">
+  <!-- Search -->
+
+  <div class="transaction-filters__search">
+    <i class="pi pi-search"></i>
+
+    <input
+      pInputText
+      type="text"
+      placeholder="Search transactions..."
+      [ngModel]="searchKeyword()"
+      (ngModelChange)="searchKeywordChange.emit($event)"
+    />
+  </div>
+
+  <!-- Transaction Type -->
+
+  <p-select
+    class="transaction-filters__select"
+    [options]="transactionTypes"
+    optionLabel="label"
+    optionValue="value"
+    placeholder="Transaction Type"
+    [ngModel]="selectedTransactionType()"
+    (ngModelChange)="transactionTypeChange.emit($event)"
+  >
+  </p-select>
+
+  <!-- Status -->
+
+  <p-select
+    class="transaction-filters__select"
+    [options]="transactionStatuses"
+    optionLabel="label"
+    optionValue="value"
+    placeholder="Status"
+    [ngModel]="selectedStatus()"
+    (ngModelChange)="statusChange.emit($event)"
+  >
+  </p-select>
+
+  <!-- Clear Filters -->
+
+  <button
+    pButton
+    type="button"
+    label="Clear Filters"
+    icon="pi pi-filter-slash"
+    severity="secondary"
+    outlined
+    (click)="clearFilters.emit()"
+  ></button>
+</div>

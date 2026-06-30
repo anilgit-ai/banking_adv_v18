@@ -18,10 +18,7 @@ export const API_ENDPOINTS = {
   },
   USERS: '/users',
   BENEFICIARIES: '/beneficiaries',
-
   LOANS: '/loans',
-
   REPORTS: '/reports',
-
   AUDIT_LOGS: '/auditLogs',
 } as const;

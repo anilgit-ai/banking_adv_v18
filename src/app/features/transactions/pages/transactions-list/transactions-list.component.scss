@@ -1,10 +1,12 @@
-.edit-customer {
+.transactions {
   display: flex;
+
   flex-direction: column;
-  gap: 2rem;
-  padding: 2rem;
-  max-width: 1100px;
-  margin: 0 auto;
+
+  gap: 1.5rem;
+
+  padding: 1.5rem;
+
   /* ==========================================
      Header
   ========================================== */
@@ -32,27 +34,11 @@
   }
 
   &__subtitle {
-    margin-top: 0.4rem;
+    margin-top: 0.35rem;
 
     color: #6b7280;
 
     font-size: 0.95rem;
-  }
-
-  /* ==========================================
-     Form Card
-  ========================================== */
-
-  &__card {
-    background: #ffffff;
-
-    border: 1px solid #e5e7eb;
-
-    border-radius: 14px;
-
-    padding: 2rem;
-
-    box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
   }
 
   /* ==========================================
@@ -62,53 +48,49 @@
   &__loading {
     display: flex;
 
-    flex-direction: column;
-
     justify-content: center;
 
     align-items: center;
 
-    gap: 1rem;
+    min-height: 250px;
 
-    min-height: 350px;
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    color: #64748b;
 
     background: #ffffff;
 
     border: 1px solid #e5e7eb;
 
-    border-radius: 14px;
-
-    color: #64748b;
-
-    font-weight: 600;
-
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-
-    i {
-      font-size: 2.5rem;
-
-      color: #2563eb;
-    }
-
-    span {
-      font-size: 1rem;
-    }
+    border-radius: 12px;
   }
 
   /* ==========================================
-     Footer Actions
+     Error
   ========================================== */
 
-  &__actions {
+  &__error {
     display: flex;
 
-    justify-content: flex-end;
+    justify-content: center;
 
     align-items: center;
 
-    gap: 1rem;
+    min-height: 250px;
 
-    margin-top: 0.5rem;
+    font-size: 1rem;
+
+    font-weight: 600;
+
+    color: #dc2626;
+
+    background: #fef2f2;
+
+    border: 1px solid #fecaca;
+
+    border-radius: 12px;
   }
 }
 
@@ -118,23 +100,19 @@
 
 :host ::ng-deep {
   .p-button {
-    min-width: 170px;
-
-    height: 44px;
-
     border-radius: 10px;
 
     font-weight: 600;
 
-    transition: all 0.25s ease;
+    min-width: 170px;
+
+    height: 44px;
   }
 
   .p-button:hover {
     transform: translateY(-1px);
-  }
 
-  .p-button:disabled {
-    opacity: 0.7;
+    transition: all 0.2s ease;
   }
 }
 
@@ -143,10 +121,8 @@
 ========================================== */
 
 @media (max-width: 768px) {
-  .edit-customer {
+  .transactions {
     padding: 1rem;
-
-    gap: 1.5rem;
 
     &__header {
       flex-direction: column;
@@ -154,20 +130,8 @@
       align-items: flex-start;
     }
 
-    &__card {
-      padding: 1.25rem;
-    }
-
-    &__actions {
-      flex-direction: column-reverse;
-
-      .p-button {
-        width: 100%;
-      }
-    }
-
-    &__loading {
-      min-height: 250px;
+    :host ::ng-deep .p-button {
+      width: 100%;
     }
   }
 }

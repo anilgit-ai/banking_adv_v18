@@ -1,0 +1,178 @@
+<p-table
+  [value]="transactions()"
+  responsiveLayout="scroll"
+  stripedRows
+  showGridlines
+  sortMode="single"
+  [paginator]="true"
+  [rows]="10"
+  [rowsPerPageOptions]="[5, 10, 20, 50]"
+  currentPageReportTemplate="Showing {first} to {last} of {totalRecords} transactions"
+  [showCurrentPageReport]="true"
+>
+  <!-- ===========================================
+       Table Header
+  ============================================ -->
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th pSortableColumn="transactionNumber">
+        Transaction No
+        <p-sortIcon field="transactionNumber"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="accountNumber">
+        Account No
+        <p-sortIcon field="accountNumber"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="customerName">
+        Customer
+        <p-sortIcon field="customerName"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="transactionType">
+        Type
+        <p-sortIcon field="transactionType"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="amount" class="text-right">
+        Amount
+        <p-sortIcon field="amount"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="transactionDate">
+        Date
+        <p-sortIcon field="transactionDate"></p-sortIcon>
+      </th>
+
+      <th pSortableColumn="status">
+        Status
+        <p-sortIcon field="status"></p-sortIcon>
+      </th>
+
+      <th class="actions-column">Actions</th>
+    </tr>
+  </ng-template>
+
+  <!-- ===========================================
+       Table Body
+  ============================================ -->
+
+  <ng-template pTemplate="body" let-transaction>
+    <tr>
+      <!-- Transaction Number -->
+
+      <td>
+        <span
+          [innerHTML]="
+            transaction.transactionNumber | highlight: searchKeyword()
+          "
+        >
+        </span>
+      </td>
+
+      <!-- Account Number -->
+
+      <td>
+        <span
+          [innerHTML]="transaction.accountNumber | highlight: searchKeyword()"
+        >
+        </span>
+      </td>
+
+      <!-- Customer -->
+
+      <td>
+        <span
+          [innerHTML]="transaction.customerName | highlight: searchKeyword()"
+        >
+        </span>
+      </td>
+
+      <!-- Transaction Type -->
+
+      <td>
+        <p-tag
+          [value]="transaction.transactionType"
+          [severity]="getTypeSeverity(transaction.transactionType)"
+        >
+        </p-tag>
+      </td>
+
+      <!-- Amount -->
+
+      <td class="text-right">₹{{ transaction.amount | number: "1.2-2" }}</td>
+
+      <!-- Date -->
+
+      <td>
+        {{ transaction.transactionDate | date: "dd MMM yyyy" }}
+      </td>
+
+      <!-- Status -->
+
+      <td>
+        <p-tag
+          [value]="transaction.status"
+          [severity]="getStatusSeverity(transaction.status)"
+        >
+        </p-tag>
+      </td>
+
+      <!-- Actions -->
+
+      <td>
+        <div class="table-actions">
+          <!-- View -->
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-eye"
+            [text]="true"
+            rounded
+            aria-label="View"
+            [routerLink]="['/app/transactions', transaction.id]"
+          ></button>
+
+          <!-- Edit -->
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            [text]="true"
+            rounded
+            severity="secondary"
+            aria-label="Edit"
+            [routerLink]="['/app/transactions', transaction.id, 'edit']"
+          ></button>
+
+          <!-- Delete -->
+
+          <button
+            pButton
+            type="button"
+            icon="pi pi-trash"
+            [text]="true"
+            rounded
+            severity="danger"
+            aria-label="Delete"
+            (click)="delete.emit(transaction.id)"
+          ></button>
+        </div>
+      </td>
+    </tr>
+  </ng-template>
+
+  <!-- ===========================================
+       Empty State
+  ============================================ -->
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="8">No transactions found.</td>
+    </tr>
+  </ng-template>
+</p-table>
