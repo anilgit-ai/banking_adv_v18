@@ -61,6 +61,11 @@ export const appRoutes: Routes = [
             (m) => m.TRANSACTIONS_ROUTES,
           ),
       },
+      {
+        path: ROUTES.APP.LOANS,
+        loadChildren: () =>
+          import('./features/loans/loans.routes').then((m) => m.LOANS_ROUTES),
+      },
     ],
   },
 

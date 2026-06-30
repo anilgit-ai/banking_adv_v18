@@ -13,9 +13,11 @@ export const API_ENDPOINTS = {
   TRANSACTIONS: {
     LIST: '/transactions',
   },
+  LOANS: {
+    LIST: '/loans',
+  },
   USERS: '/users',
   BENEFICIARIES: '/beneficiaries',
-  LOANS: '/loans',
   REPORTS: '/reports',
   AUDIT_LOGS: '/auditLogs',
 } as const;

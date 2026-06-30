@@ -1,0 +1,73 @@
+<div class="loan-filters" [formGroup]="filterForm">
+  <!-- ===========================================
+       Search
+  ============================================ -->
+  <div class="loan-filters__field">
+    <label>Search</label>
+    <input
+      pInputText
+      type="text"
+      formControlName="search"
+      placeholder="Search by loan number..."
+    />
+  </div>
+  <!-- ===========================================
+       Customer
+  ============================================ -->
+  <div class="loan-filters__field">
+    <label>Customer</label>
+    <p-select
+      [options]="customers()"
+      optionLabel="fullName"
+      optionValue="id"
+      formControlName="customerId"
+      placeholder="All Customers"
+      [showClear]="true"
+    >
+    </p-select>
+  </div>
+  <!-- ===========================================
+       Loan Type
+  ============================================ -->
+  <div class="loan-filters__field">
+    <label>Loan Type</label>
+    <p-select
+      [options]="loanTypes"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="loanType"
+      placeholder="All Types"
+      [showClear]="true"
+    >
+    </p-select>
+  </div>
+  <!-- ===========================================
+       Status
+  ============================================ -->
+  <div class="loan-filters__field">
+    <label>Status</label>
+    <p-select
+      [options]="loanStatuses"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="status"
+      placeholder="All Statuses"
+      [showClear]="true"
+    >
+    </p-select>
+  </div>
+  <!-- ===========================================
+       Actions
+  ============================================ -->
+  <div class="loan-filters__actions">
+    <button
+      pButton
+      type="button"
+      icon="pi pi-filter-slash"
+      label="Clear"
+      severity="secondary"
+      outlined
+      (click)="clearFilters()"
+    ></button>
+  </div>
+</div>

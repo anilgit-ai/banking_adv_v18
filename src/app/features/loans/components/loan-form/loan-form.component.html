@@ -1,0 +1,194 @@
+<div class="loan-form" [formGroup]="form()">
+  <!-- ===========================================
+       Customer
+  ============================================ -->
+  <div class="loan-form__field">
+    <label> Customer <span>*</span> </label>
+    <p-select
+      [options]="customers()"
+      optionLabel="fullName"
+      optionValue="id"
+      formControlName="customerId"
+      placeholder="Select customer"
+    >
+    </p-select>
+    @if (
+      form().controls.customerId.touched && form().controls.customerId.invalid
+    ) {
+      <small class="loan-form__error"> Customer is required. </small>
+    }
+  </div>
+  <!-- ===========================================
+       Loan Type
+  ============================================ -->
+  <div class="loan-form__field">
+    <label> Loan Type <span>*</span> </label>
+    <p-select
+      [options]="loanTypes"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="loanType"
+      placeholder="Select loan type"
+    >
+    </p-select>
+    @if (form().controls.loanType.touched && form().controls.loanType.invalid) {
+      <small class="loan-form__error"> Loan type is required. </small>
+    }
+  </div>
+  <!-- ===========================================
+       Principal Amount
+  ============================================ -->
+  <div class="loan-form__field">
+    <label> Principal Amount <span>*</span> </label>
+    <p-inputNumber
+      formControlName="principalAmount"
+      mode="currency"
+      currency="INR"
+      locale="en-IN"
+      [min]="1000"
+      placeholder="Enter amount"
+    >
+    </p-inputNumber>
+    @if (
+      form().controls.principalAmount.touched &&
+      form().controls.principalAmount.invalid
+    ) {
+      <small class="loan-form__error"> Principal amount is required. </small>
+    }
+  </div>
+  <!-- ===========================================
+       Interest Rate
+  ============================================ -->
+  <div class="loan-form__field">
+    <label> Interest Rate (%) <span>*</span> </label>
+    <p-inputNumber
+      formControlName="interestRate"
+      suffix="%"
+      [min]="1"
+      [max]="25"
+      [minFractionDigits]="1"
+      [maxFractionDigits]="2"
+      placeholder="Interest rate"
+    >
+    </p-inputNumber>
+    @if (
+      form().controls.interestRate.touched &&
+      form().controls.interestRate.invalid
+    ) {
+      <small class="loan-form__error"> Interest rate is required. </small>
+    }
+  </div>
+  <!-- ===========================================
+       Tenure
+  ============================================ -->
+  <div class="loan-form__field">
+    <label> Tenure (Months) <span>*</span> </label>
+    <p-inputNumber
+      formControlName="tenureMonths"
+      [min]="1"
+      [max]="360"
+      placeholder="Loan tenure"
+    >
+    </p-inputNumber>
+    @if (
+      form().controls.tenureMonths.touched &&
+      form().controls.tenureMonths.invalid
+    ) {
+      <small class="loan-form__error"> Tenure is required. </small>
+    }
+  </div>
+  <!-- ===========================================
+       EMI
+  ============================================ -->
+  <div class="loan-form__field">
+    <label>EMI</label>
+    <p-inputNumber
+      formControlName="emiAmount"
+      mode="currency"
+      currency="INR"
+      locale="en-IN"
+      [readonly]="true"
+    >
+    </p-inputNumber>
+  </div>
+  <!-- ===========================================
+       Start Date
+  ============================================ -->
+  <div class="loan-form__field">
+    <label> Start Date <span>*</span> </label>
+    <p-datepicker
+      formControlName="startDate"
+      [showIcon]="true"
+      appendTo="body"
+      dateFormat="dd/mm/yy"
+    >
+    </p-datepicker>
+    @if (
+      form().controls.startDate.touched && form().controls.startDate.invalid
+    ) {
+      <small class="loan-form__error"> Start date is required. </small>
+    }
+  </div>
+  <!-- ===========================================
+       End Date
+  ============================================ -->
+  <div class="loan-form__field">
+    <label>End Date</label>
+    <p-datepicker
+      formControlName="endDate"
+      [showIcon]="true"
+      [readonlyInput]="true"
+      appendTo="body"
+      dateFormat="dd/mm/yy"
+    >
+    </p-datepicker>
+  </div>
+  <!-- ===========================================
+       Outstanding Balance
+  ============================================ -->
+  <div class="loan-form__field">
+    <label>Outstanding Balance</label>
+    <p-inputNumber
+      formControlName="outstandingBalance"
+      mode="currency"
+      currency="INR"
+      locale="en-IN"
+      [readonly]="true"
+    >
+    </p-inputNumber>
+  </div>
+  <!-- ===========================================
+       Status
+  ============================================ -->
+  <div class="loan-form__field">
+    <label> Status <span>*</span> </label>
+    <p-select
+      [options]="loanStatuses"
+      optionLabel="label"
+      optionValue="value"
+      formControlName="status"
+      placeholder="Select status"
+    >
+    </p-select>
+    @if (form().controls.status.touched && form().controls.status.invalid) {
+      <small class="loan-form__error"> Status is required. </small>
+    }
+  </div>
+  <!-- ===========================================
+       Remarks
+  ============================================ -->
+  <div class="loan-form__field loan-form__field--full">
+    <label>Remarks</label>
+    <textarea
+      pInputTextarea
+      rows="4"
+      formControlName="remarks"
+      [maxlength]="maxRemarksLength"
+      placeholder="Enter remarks"
+    >
+    </textarea>
+    <small class="loan-form__hint">
+      {{ form().controls.remarks.value.length }}/{{ maxRemarksLength }}
+    </small>
+  </div>
+</div>

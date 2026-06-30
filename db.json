@@ -186,8 +186,39 @@
       "id": "TaLcANS"
     }
   ],
+  "loans": [
+    {
+      "id": "1",
+      "loanNumber": "LN100001",
+      "customerId": "1",
+      "loanType": "HOME",
+      "principalAmount": 2500000,
+      "interestRate": 8.25,
+      "tenureMonths": 240,
+      "emiAmount": 21296,
+      "startDate": "2026-07-01",
+      "endDate": "2046-06-30",
+      "outstandingBalance": 2500000,
+      "status": "ACTIVE",
+      "remarks": "Home loan approved."
+    },
+    {
+      "loanNumber": "LN100002",
+      "customerId": "5a6b0b49-18b1-47e7-ac25-6695b2aab99c",
+      "loanType": "PERSONAL",
+      "principalAmount": 50000,
+      "interestRate": 8.5,
+      "tenureMonths": 24,
+      "emiAmount": 2272.78,
+      "startDate": "2026-06-30",
+      "endDate": "2028-06-30",
+      "outstandingBalance": 50000,
+      "status": "APPROVED",
+      "remarks": "This loan approved to Anil",
+      "id": "Q24cvJu"
+    }
+  ],
   "beneficiaries": [],
-  "loans": [],
   "notifications": [],
   "auditLogs": []
 }

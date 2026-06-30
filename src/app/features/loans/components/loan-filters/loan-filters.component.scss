@@ -1,0 +1,105 @@
+:host {
+  display: block;
+}
+
+/* ==========================================
+   Loan Filters
+========================================== */
+
+.loan-filters {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.2fr 1.2fr auto;
+  gap: 1rem;
+  align-items: end;
+
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+}
+
+/* ==========================================
+   Filter Fields
+========================================== */
+
+.loan-filters__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+
+  label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #374151;
+  }
+}
+
+/* ==========================================
+   Actions
+========================================== */
+
+.loan-filters__actions {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+
+  .p-button {
+    white-space: nowrap;
+    min-width: 110px;
+  }
+}
+
+/* ==========================================
+   PrimeNG Controls
+========================================== */
+
+:host ::ng-deep {
+  .p-inputtext,
+  .p-select {
+    width: 100%;
+  }
+
+  .p-inputtext,
+  .p-select-label {
+    font-size: 0.95rem;
+  }
+
+  .p-select {
+    min-height: 42px;
+  }
+
+  .p-button {
+    height: 42px;
+  }
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width: 1200px) {
+  .loan-filters {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .loan-filters__actions {
+    grid-column: 1 / -1;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .loan-filters {
+    grid-template-columns: 1fr;
+  }
+
+  .loan-filters__actions {
+    justify-content: stretch;
+
+    .p-button {
+      width: 100%;
+    }
+  }
+}
