@@ -1,7 +1,17 @@
 <section class="transactions">
+  <!-- ===========================================
+       Header
+  ============================================ -->
+
   <h3 class="transactions__title">Recent Transactions</h3>
 
+  <!-- ===========================================
+       Transactions Table
+  ============================================ -->
+
   <p-table [value]="transactions()" responsiveLayout="scroll">
+    <!-- Header -->
+
     <ng-template pTemplate="header">
       <tr>
         <th>Date</th>
@@ -13,6 +23,8 @@
         <th class="amount-column">Amount</th>
       </tr>
     </ng-template>
+
+    <!-- Body -->
 
     <ng-template pTemplate="body" let-transaction>
       <tr>
@@ -26,9 +38,11 @@
 
         <td>
           <p-tag
-            [value]="transaction.type"
+            [value]="transaction.transactionType"
             [severity]="
-              transaction.type === transactionType.CREDIT ? 'success' : 'danger'
+              transaction.transactionType === transactionType.CREDIT
+                ? 'success'
+                : 'danger'
             "
           >
           </p-tag>
@@ -36,10 +50,12 @@
 
         <td
           class="amount-column"
-          [class.credit]="transaction.type === transactionType.CREDIT"
-          [class.debit]="transaction.type === transactionType.DEBIT"
+          [class.credit]="
+            transaction.transactionType === transactionType.CREDIT
+          "
+          [class.debit]="transaction.transactionType === transactionType.DEBIT"
         >
-          ₹{{ transaction.amount | number }}
+          ₹{{ transaction.amount | number: "1.2-2" }}
         </td>
       </tr>
     </ng-template>

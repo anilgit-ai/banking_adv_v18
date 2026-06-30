@@ -1,17 +1,10 @@
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
-
 import { ApiService } from '../../../core/services/api.service';
-
 import { API_ENDPOINTS } from '../../../core/constants/api-endpoints.constants';
-
-import { Transaction } from '../models/transaction.model';
-
 import { CreateTransaction } from '../models/create-transaction.model';
-
 import { UpdateTransaction } from '../models/update-transaction.model';
-
+import { Transactions } from '../models/transactions.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -19,15 +12,15 @@ export class TransactionsService extends ApiService {
   /**
    * Retrieves all transactions.
    */
-  public getTransactions(): Observable<Transaction[]> {
-    return this.get<Transaction[]>(API_ENDPOINTS.TRANSACTIONS.LIST);
+  public getTransactions(): Observable<Transactions[]> {
+    return this.get<Transactions[]>(API_ENDPOINTS.TRANSACTIONS.LIST);
   }
 
   /**
    * Retrieves a transaction by id.
    */
-  public getTransactionById(id: string): Observable<Transaction> {
-    return this.get<Transaction>(`${API_ENDPOINTS.TRANSACTIONS.LIST}/${id}`);
+  public getTransactionById(id: string): Observable<Transactions> {
+    return this.get<Transactions>(`${API_ENDPOINTS.TRANSACTIONS.LIST}/${id}`);
   }
 
   /**
@@ -35,8 +28,8 @@ export class TransactionsService extends ApiService {
    */
   public createTransaction(
     transaction: CreateTransaction,
-  ): Observable<Transaction> {
-    return this.post<Transaction>(API_ENDPOINTS.TRANSACTIONS.LIST, transaction);
+  ): Observable<Transactions> {
+    return this.post<Transactions>(API_ENDPOINTS.TRANSACTIONS.LIST, transaction);
   }
 
   /**
@@ -45,8 +38,8 @@ export class TransactionsService extends ApiService {
   public updateTransaction(
     id: string,
     transaction: UpdateTransaction,
-  ): Observable<Transaction> {
-    return this.put<Transaction>(
+  ): Observable<Transactions> {
+    return this.put<Transactions>(
       `${API_ENDPOINTS.TRANSACTIONS.LIST}/${id}`,
       transaction,
     );

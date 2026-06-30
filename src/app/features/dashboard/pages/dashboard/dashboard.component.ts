@@ -13,17 +13,16 @@ import { AuthStore } from '../../../../store/auth/auth.store';
 
 import { DashboardService } from '../../services/dashboard.service';
 
-import { StatCardComponent } from '../../../../shared/components/stat-card/stat-card.component';
-
-import { DashboardSummary } from '../../models/dashboard-summary.model';
+import { DashboardViewModel } from '../../models/dashboard-view.model';
 
 import { StatisticCard } from '../../models/statistic-card.model';
-import { CardVariant } from '../../../../shared/enums/card-variant.enum';
 import { QuickAction } from '../../models/quick-action.model';
+
+import { StatCardComponent } from '../../../../shared/components/stat-card/stat-card.component';
 import { ActionCardComponent } from '../../../../shared/components/action-card/action-card.component';
 import { RecentTransactionsComponent } from '../../components/recent-transactions/recent-transactions.component';
-import { TransactionService } from '../../services/transaction.service';
-import { Transaction } from '../../models/transaction.model';
+
+import { CardVariant } from '../../../../shared/enums/card-variant.enum';
 
 @Component({
   selector: 'app-dashboard',
@@ -44,119 +43,134 @@ import { Transaction } from '../../models/transaction.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
-  // services and store
+  /**
+   * Dashboard Service.
+   */
   private readonly dashboardService = inject(DashboardService);
-  private readonly transactionService = inject(TransactionService);
+
+  /**
+   * Auth Store.
+   */
   private readonly authStore = inject(AuthStore);
-  //signals
+
+  /**
+   * Current user.
+   */
   protected readonly currentUser = computed(() => this.authStore.user());
+
+  /**
+   * Dashboard data.
+   */
+  protected readonly dashboard = signal<DashboardViewModel | null>(null);
+
+  /**
+   * Statistics cards.
+   */
   protected readonly statistics = signal<StatisticCard[]>([]);
+
+  /**
+   * Loading state.
+   */
   protected readonly loading = signal(false);
+
+  /**
+   * Error state.
+   */
   protected readonly hasError = signal(false);
 
   /**
-   * Load dashboard data.
+   * Component initialization.
    */
-  public ngOnInit(): void {
-    this.loadDashboardSummary();
-    this.loadRecentTransaction();
+  ngOnInit(): void {
+    this.loadDashboard();
   }
+
   /**
-   * Retrieves dashboard summary
-   * from backend.
+   * Loads dashboard.
    */
-  private loadDashboardSummary(): void {
+  private loadDashboard(): void {
     this.loading.set(true);
+
     this.hasError.set(false);
-    this.dashboardService.getSummary().subscribe({
-      next: (summary) => {
-        this.statistics.set(this.mapSummaryToCards(summary));
+
+    this.dashboardService.getDashboard().subscribe({
+      next: (dashboard) => {
+        this.dashboard.set(dashboard);
+
+        this.statistics.set(this.mapSummaryToCards(dashboard));
+
         this.loading.set(false);
       },
+
       error: () => {
         this.loading.set(false);
+
         this.hasError.set(true);
       },
     });
   }
-  //Recent transactions
-  protected readonly transactions = signal<Transaction[]>([]);
-  // Load transactions
-  private loadRecentTransaction(): void {
-    this.transactionService.getRecentTransactions().subscribe({
-      next: (transactions) => {
-        this.transactions.set(transactions);
-      },
-      error: () => {
-        this.hasError.set(true);
-      },
-    });
-  }
+
   /**
-   * Converts backend response
-   * into reusable statistic cards.
+   * Converts dashboard data
+   * into statistic cards.
    */
-  private mapSummaryToCards(summary: DashboardSummary): StatisticCard[] {
+  private mapSummaryToCards(dashboard: DashboardViewModel): StatisticCard[] {
     return [
       {
         title: 'Total Balance',
-        value: `₹${summary.totalBalance.toLocaleString()}`,
+        value: `₹${dashboard.totalBalance.toLocaleString()}`,
         icon: 'pi pi-wallet',
         variant: CardVariant.PRIMARY,
       },
 
       {
         title: 'Accounts',
-        value: summary.totalAccounts,
+        value: dashboard.totalAccounts,
         icon: 'pi pi-building-columns',
         variant: CardVariant.SUCCESS,
       },
 
       {
         title: 'Customers',
-        value: summary.totalCustomers,
+        value: dashboard.totalCustomers,
         icon: 'pi pi-users',
         variant: CardVariant.PURPLE,
       },
 
       {
         title: 'Loans',
-        value: summary.activeLoans,
+        value: dashboard.activeLoans,
         icon: 'pi pi-credit-card',
         variant: CardVariant.WARNING,
       },
     ];
   }
+
+  /**
+   * Quick actions.
+   */
   protected readonly quickActions: QuickAction[] = [
     {
       title: 'Accounts',
-
       icon: 'pi pi-building-columns',
-
       route: '/app/accounts',
     },
 
     {
       title: 'Customers',
-
       icon: 'pi pi-users',
-
       route: '/app/customers',
     },
 
     {
-      title: 'Transfer',
-
+      title: 'Transactions',
       icon: 'pi pi-send',
-
       route: '/app/transactions',
     },
 
     {
       title: 'Reports',
-
       icon: 'pi pi-chart-bar',
-
       route: '/app/reports',
     },
   ];
