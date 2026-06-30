@@ -4,9 +4,6 @@ export const API_ENDPOINTS = {
     REGISTER: '/auth/register',
     REFRESH_TOKEN: '/auth/refresh-token',
   },
-  DASHBOARD: {
-    SUMMARY: '/dashboard',
-  },
   ACCOUNTS: {
     LIST: '/accounts',
   },

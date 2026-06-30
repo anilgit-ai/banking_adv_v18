@@ -38,24 +38,20 @@
 
     <span>Transactions</span>
   </a>
-
-  <a
-    [routerLink]="['/app', routes.APP.TRANSFERS]"
-    routerLinkActive="sidebar__link--active"
-    class="sidebar__link"
-  >
-    <i class="pi pi-send"></i>
-
-    <span>Transfers</span>
-  </a>
-
   <a
     [routerLink]="['/app', routes.APP.LOANS]"
     routerLinkActive="sidebar__link--active"
     class="sidebar__link"
   >
     <i class="pi pi-money-bill"></i>
-
     <span>Loans</span>
+  </a>
+  <a
+    [routerLink]="['/app', routes.APP.TRANSFERS]"
+    routerLinkActive="sidebar__link--active"
+    class="sidebar__link"
+  >
+    <i class="pi pi-send"></i>
+    <span>Transfers</span>
   </a>
 </aside>

@@ -1,5 +1,4 @@
-import { TransactionType } from "../../../shared/enums/transaction-type.enum";
-
+import { TransactionType } from '../../../shared/enums/transaction-type.enum';
 
 export interface Transaction {
   readonly id: string;

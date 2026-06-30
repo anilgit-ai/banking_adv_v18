@@ -1,107 +1,125 @@
 .transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  margin-top: 1.5rem;
+
   background: #ffffff;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+
+  padding: 1.25rem;
+
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+
+  /* ==========================================
+     Title
+  ========================================== */
 
   &__title {
-    margin-bottom: 1.5rem;
-    font-size: 1.35rem;
-    font-weight: 700;
-    color: #1e293b;
+    margin: 0;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+
+    color: #1f2937;
+  }
+}
+
+/* ==========================================
+   Amount
+========================================== */
+
+.amount-column {
+  text-align: right;
+  font-weight: 600;
+}
+
+.credit {
+  color: #16a34a;
+}
+
+.debit {
+  color: #dc2626;
+}
+
+/* ==========================================
+   PrimeNG Table
+========================================== */
+
+:host ::ng-deep {
+  .p-datatable {
+    border-radius: 10px;
+    overflow: hidden;
   }
 
-  ::ng-deep {
-    .p-datatable {
-      border: 1px solid #e2e8f0;
-      border-radius: 0.75rem;
-      overflow: hidden;
-    }
-
-    /* ===========================
-       Table Header
-    ============================ */
-
-    .p-datatable-thead > tr > th {
-      background: #f8fafc;
-      color: #0f172a;
-      font-size: 0.95rem;
-      font-weight: 700; // Bold headers
-      padding: 1rem 1.25rem;
-      border: none;
-      border-bottom: 2px solid #cbd5e1;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* ===========================
-       Table Body
-    ============================ */
-
-    .p-datatable-tbody > tr {
-      transition: all 0.25s ease;
-
-      &:hover {
-        background: #f8fafc;
-      }
-
-      > td {
-        padding: 1rem 1.25rem;
-        border: none;
-        border-bottom: 1px solid #e2e8f0;
-        color: #475569;
-        font-size: 0.95rem;
-      }
-
-      &:last-child td {
-        border-bottom: none;
-      }
-    }
-
-    /* ===========================
-       Transaction Type Tag
-    ============================ */
-
-    .p-tag {
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.75rem;
-      padding: 0.35rem 0.9rem;
-      text-transform: uppercase;
-    }
+  .p-datatable-table {
+    width: 100%;
   }
 
-  /* ===========================
-     Amount Column
-  ============================ */
+  .p-datatable-thead > tr > th {
+    background: #f8fafc;
+
+    color: #475569;
+
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+
+    padding: 0.9rem 1rem;
+
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .p-datatable-tbody > tr {
+    transition: background 0.2s ease;
+  }
+
+  .p-datatable-tbody > tr:hover {
+    background: #f8fafc;
+  }
+
+  .p-datatable-tbody > tr > td {
+    padding: 0.9rem 1rem;
+
+    color: #374151;
+    font-size: 0.92rem;
+
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .p-tag {
+    min-width: 90px;
+    justify-content: center;
+    font-weight: 600;
+  }
+
+  .p-datatable-tbody > tr:last-child > td {
+    border-bottom: none;
+  }
+}
+
+/* ==========================================
+   Responsive
+========================================== */
+
+@media (max-width: 768px) {
+  .transactions {
+    padding: 1rem;
+  }
 
   .amount-column {
-    text-align: right;
-    font-weight: 700;
-    font-size: 1rem;
+    text-align: left;
   }
 
-  .credit {
-    color: #16a34a; // Professional Green
-  }
-
-  .debit {
-    color: #dc2626; // Professional Red
-  }
-
-  @media (max-width: 768px) {
-    padding: 1rem;
-
-    ::ng-deep {
-      .p-datatable-thead > tr > th,
-      .p-datatable-tbody > tr > td {
-        padding: 0.85rem;
-        font-size: 0.875rem;
-      }
-    }
-
-    .amount-column {
-      font-size: 0.9rem;
+  :host ::ng-deep {
+    .p-datatable-thead > tr > th,
+    .p-datatable-tbody > tr > td {
+      padding: 0.75rem;
+      font-size: 0.85rem;
     }
   }
 }

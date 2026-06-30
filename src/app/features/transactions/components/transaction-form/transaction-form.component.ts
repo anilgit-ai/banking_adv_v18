@@ -8,11 +8,9 @@ import { InputNumberModule } from 'primeng/inputnumber';
 
 import { DatePickerModule } from 'primeng/datepicker';
 import { SelectModule } from 'primeng/select';
-
 import { TransactionForm } from '../../models/transaction-form.model';
 import { Customer } from '../../../customers/models/customer.model';
 import { Account } from '../../../accounts/models/account.model';
-
 import { TRANSACTION_CONSTANTS } from '../../constants/transaction.constants';
 
 @Component({
@@ -27,6 +25,7 @@ import { TRANSACTION_CONSTANTS } from '../../constants/transaction.constants';
     InputNumberModule,
     DatePickerModule,
     SelectModule,
+    InputTextModule,
   ],
 
   templateUrl: './transaction-form.component.html',
