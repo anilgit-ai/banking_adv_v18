@@ -1,0 +1,64 @@
+<section class="loans-list">
+  <!-- ===========================================
+       Header
+  ============================================ -->
+  <header class="loans-list__header">
+    <div>
+      <h2 class="loans-list__title">Loans</h2>
+      <p class="loans-list__subtitle">Manage customer loans.</p>
+    </div>
+    <button
+      pButton
+      type="button"
+      icon="pi pi-plus"
+      label="New Loan"
+      (click)="createLoan()"
+    ></button>
+  </header>
+  <!-- ===========================================
+       Error State
+  ============================================ -->
+  @if (hasError()) {
+    <div class="loans-list__error">
+      Unable to load loans.
+      <button
+        pButton
+        type="button"
+        label="Retry"
+        severity="secondary"
+        (click)="reload()"
+      ></button>
+    </div>
+  }
+  <!-- ===========================================
+       Loading State
+  ============================================ -->
+  @else if (loading()) {
+    <div class="loans-list__loading">
+      <i class="pi pi-spin pi-spinner"></i>
+      <span> Loading loans... </span>
+    </div>
+  }
+  <!-- ===========================================
+       Content
+  ============================================ -->
+  @else {
+    <!-- Loan Filters -->
+
+    <app-loan-filters
+      [customers]="customers()"
+      (filterChanged)="applyFilters($event)"
+    >
+    </app-loan-filters>
+
+    <!-- Loan Table -->
+
+    <app-loan-table
+      [loans]="filteredLoans()"
+      (view)="viewLoan($event)"
+      (edit)="editLoan($event)"
+      (delete)="deleteLoan($event)"
+    >
+    </app-loan-table>
+  }
+</section>

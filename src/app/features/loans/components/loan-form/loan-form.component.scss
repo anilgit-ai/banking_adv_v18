@@ -1,0 +1,79 @@
+.loan-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.5rem;
+  /* ==========================================
+     Field
+  ========================================== */
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    label {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #374151;
+      span {
+        color: #ef4444;
+      }
+    }
+    &--full {
+      grid-column: 1 / -1;
+    }
+  }
+  /* ==========================================
+     Validation
+  ========================================== */
+  &__error {
+    color: #dc2626;
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
+  /* ==========================================
+     Hint
+  ========================================== */
+  &__hint {
+    align-self: flex-end;
+    color: #6b7280;
+    font-size: 0.75rem;
+  }
+}
+/* ==========================================
+   PrimeNG Controls
+========================================== */
+:host ::ng-deep {
+  .p-inputtext,
+  .p-inputnumber,
+  .p-datepicker,
+  .p-select,
+  textarea {
+    width: 100%;
+  }
+  .p-inputnumber-input,
+  .p-datepicker-input,
+  .p-select {
+    width: 100%;
+  }
+  textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+  .p-inputnumber-input[readonly],
+  .p-datepicker-input[readonly] {
+    background: #f8fafc;
+    color: #475569;
+    cursor: default;
+  }
+  .p-select {
+    width: 100%;
+  }
+}
+/* ==========================================
+   Responsive
+========================================== */
+@media (max-width: 768px) {
+  .loan-form {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}

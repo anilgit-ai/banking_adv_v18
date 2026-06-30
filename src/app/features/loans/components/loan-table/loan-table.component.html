@@ -1,0 +1,98 @@
+<p-table [value]="loans()" responsiveLayout="scroll" styleClass="loan-table">
+  <!-- ===========================================
+       Header
+  ============================================ -->
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Loan Number</th>
+
+      <th>Customer</th>
+
+      <th>Loan Type</th>
+
+      <th class="loan-table__amount">Principal</th>
+
+      <th class="loan-table__amount">Outstanding</th>
+
+      <th>Status</th>
+
+      <th class="loan-table__actions">Actions</th>
+    </tr>
+  </ng-template>
+
+  <!-- ===========================================
+       Body
+  ============================================ -->
+
+  <ng-template pTemplate="body" let-loan>
+    <tr>
+      <td>
+        {{ loan.loanNumber }}
+      </td>
+
+      <td>
+        {{ loan.customerName }}
+      </td>
+
+      <td>
+        {{ loan.loanType }}
+      </td>
+
+      <td class="loan-table__amount">
+        ₹{{ loan.principalAmount | number: "1.2-2" }}
+      </td>
+
+      <td class="loan-table__amount">
+        ₹{{ loan.outstandingBalance | number: "1.2-2" }}
+      </td>
+
+      <td>
+        <p-tag
+          [value]="loan.status"
+          [severity]="getStatusSeverity(loan.status)"
+        >
+        </p-tag>
+      </td>
+
+      <td class="loan-table__actions">
+        <button
+          pButton
+          type="button"
+          icon="pi pi-eye"
+          severity="info"
+          text
+          (click)="view.emit(loan.id)"
+        ></button>
+
+        <button
+          pButton
+          type="button"
+          icon="pi pi-pencil"
+          severity="warn"
+          text
+          (click)="edit.emit(loan.id)"
+        ></button>
+
+        <button
+          pButton
+          type="button"
+          icon="pi pi-trash"
+          severity="danger"
+          text
+          (click)="delete.emit(loan.id)"
+        ></button>
+      </td>
+    </tr>
+  </ng-template>
+
+  <!-- ===========================================
+       Empty State
+  ============================================ -->
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="7" class="loan-table__empty">No loans found.</td>
+    </tr>
+  </ng-template>
+</p-table>

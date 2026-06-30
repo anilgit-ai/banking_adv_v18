@@ -1,0 +1,52 @@
+<section class="create-loan">
+  <!-- ===========================================
+       Header
+  ============================================ -->
+  <header class="create-loan__header">
+    <div>
+      <h2 class="create-loan__title">Create Loan</h2>
+      <p class="create-loan__subtitle">Create a new customer loan.</p>
+    </div>
+  </header>
+  <!-- ===========================================
+       Loading
+  ============================================ -->
+  @if (loading()) {
+    <div class="create-loan__loading">
+      <i class="pi pi-spin pi-spinner"></i>
+      <span> Loading customers... </span>
+    </div>
+  }
+  <!-- ===========================================
+       Form
+  ============================================ -->
+  @else {
+    <div class="create-loan__card">
+      <app-loan-form [form]="loanForm" [customers]="customers()">
+      </app-loan-form>
+    </div>
+    <!-- ===========================================
+         Actions
+    ============================================ -->
+    <footer class="create-loan__actions">
+      <button
+        pButton
+        type="button"
+        label="Cancel"
+        icon="pi pi-times"
+        severity="secondary"
+        outlined
+        (click)="cancel()"
+      ></button>
+      <button
+        pButton
+        type="button"
+        label="Create Loan"
+        icon="pi pi-check"
+        [loading]="saving()"
+        [disabled]="loanForm.invalid || saving()"
+        (click)="createLoan()"
+      ></button>
+    </footer>
+  }
+</section>
